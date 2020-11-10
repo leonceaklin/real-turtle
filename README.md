@@ -20,7 +20,7 @@
 ## 📦 Getting Started
 
 ```
-git clone https://github.com/hodgef/js-library-boilerplate-basic.git myLibrary
+git clone https://github.com/hodgef/js-library-boilerplate-basic.git Turtle
 npm install
 ```
 
@@ -29,7 +29,7 @@ npm install
 > Before shipping, make sure to:
 1. Edit `LICENSE` file
 2. Edit `package.json` information (These will be used to generate the headers for your built files)
-3. Edit `library: "MyLibrary"` with your library's export name in `./webpack.config.js`
+3. Edit `library: "Turtle"` with your library's export name in `./webpack.config.js`
 
 ## 🚀 Deployment
 1. `npm publish`
@@ -37,8 +37,8 @@ npm install
 
 ### npm
 ```
-import MyLibrary from 'my-library';
-const libraryInstance = new MyLibrary();
+import Turtle from 'my-library';
+const libraryInstance = new Turtle();
 ...
 ```
 
@@ -46,8 +46,8 @@ const libraryInstance = new MyLibrary();
 ```
 <script src="build/index.js"></script>
 
-const MyLibrary = window.MyLibrary.default;
-const libraryInstance = new MyLibrary();
+const Turtle = window.Turtle.default;
+const libraryInstance = new Turtle();
 ...
 ```
 

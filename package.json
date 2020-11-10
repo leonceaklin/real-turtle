@@ -11,10 +11,13 @@
   },
   "author": "Léonce Aklin",
   "license": "MIT",
+  "repository": {
+    "url": "https://zebrapig.com"
+  },
   "homepage": "https://zebrapig.com",
   "keywords": [
     "library",
-    "starter",
+    "turtle",
     "es6"
   ],
   "devDependencies": {

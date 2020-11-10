@@ -1,6 +1,10 @@
-let MyLibrary = window.MyLibrary.default;
-let myLibraryInstance = new MyLibrary();
+let Turtle = window.Turtle.default;
 
-console.log("myLibraryInstance", myLibraryInstance);
+let options = {
+  speed: .1,
+  verbose: true
+};
 
-myLibraryInstance.myMethod();
+let element = document.getElementById("canvas");
+
+let turtle = new Turtle(element, options);
