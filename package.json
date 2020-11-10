@@ -1,7 +1,7 @@
 {
-  "name": "@hodgef/js-library-boilerplate-basic",
-  "version": "1.4.47",
-  "description": "Javascript Minimal Starter Kit for building libraries",
+  "name": "@leonceaklin/turtle",
+  "version": "1.0.0",
+  "description": "A turtle library for JS beginners",
   "main": "build/index.js",
   "scripts": {
     "build": "webpack",
@@ -9,16 +9,9 @@
     "prepare": "npm run build",
     "trypublish": "npm publish || true"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hodgef/js-library-boilerplate-basic"
-  },
-  "author": "Francisco Hodge <hello@franciscohodge.com> (https://github.com/hodgef)",
+  "author": "Léonce Aklin",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hodgef/js-library-boilerplate-basic/issues"
-  },
-  "homepage": "https://github.com/hodgef/js-library-boilerplate-basic",
+  "homepage": "https://zebrapig.com",
   "keywords": [
     "library",
     "starter",
