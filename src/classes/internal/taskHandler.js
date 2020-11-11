@@ -14,10 +14,10 @@ export default class TaskHandler extends InternalClass {
   }
 
   drawTurtle() {
-    if(this.main.state.size == 0){
+    if (this.main.state.size == 0) {
       return;
     }
-    
+
     this.ctx.restore();
     var angleInRadians = this.main.state.rotation * (Math.PI / 180);
 
