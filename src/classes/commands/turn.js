@@ -1,14 +1,27 @@
 import Command from "../constructors/drawingCommand";
 
 export default class TurnCommand extends Command {
+  static params = { degrees: new Number() };
+
   constructor(options) {
     super(options);
   }
 
-  prepare(main) {
-    this.main = main;
-    return { requiredTime: 1000 };
+  estimate(main) {
+    return {
+      requiredTime:
+        (1 - this.main.state.speed) * Math.abs(this.options.degrees) * 10,
+    };
   }
 
-  execute(progress) {}
+  prepare(main) {}
+
+  async execute(progress) {
+    return new Promise((resolve) => {
+      this.state.setRotation(
+        this.initialState.rotation + this.options.degrees * progress
+      );
+      resolve();
+    });
+  }
 }

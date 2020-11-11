@@ -26,6 +26,7 @@ module.exports = {
   mode: "production",
   devtool: 'source-map',
   entry: './src/index.js',
+  target: "es2020",
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'build'),

@@ -1,8 +1,8 @@
 let Turtle = window.Turtle.default;
 
 let options = {
-  speed: .1,
-  verbose: true
+  verbose: true,
+  autoStart: true
 };
 
 let element = document.getElementById("canvas");

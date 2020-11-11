@@ -42,7 +42,9 @@
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "regenerator-runtime": "^0.13.7"
+  },
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/scripts/testMock.js",
