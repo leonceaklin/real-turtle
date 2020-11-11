@@ -31,10 +31,12 @@ export default class MoveCommand extends Command {
         if (!this.state.pathActive) {
           this.ctx.beginPath();
         }
+
         this.ctx.moveTo(
           this.initialState.position.x,
           this.initialState.position.y
         );
+        this.ctx.lineCap = this.state.lineCap;
         this.ctx.lineTo(xNow, yNow);
         this.ctx.strokeStyle = this.state.strokeStyle;
         this.ctx.lineWidth = this.state.lineWidth;

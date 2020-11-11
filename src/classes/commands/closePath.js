@@ -1,6 +1,6 @@
 import Command from "../constructors/drawingCommand";
 
-export default class FillCommand extends Command {
+export default class ClosePathCommand extends Command {
   static params = {};
 
   constructor(options) {
@@ -17,8 +17,8 @@ export default class FillCommand extends Command {
 
   async execute(progress) {
     return new Promise((resolve) => {
-      this.ctx.setFillStyle = this.state.fillStyle;
-      this.ctx.fill();
+      this.ctx.closePath();
+      this.state.setPathActive(false);
       resolve();
     });
   }

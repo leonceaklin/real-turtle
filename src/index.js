@@ -24,7 +24,13 @@ class Turtle {
 
     this.options = standardOptions;
     for (const [key, value] of Object.entries(options)) {
-      this.options[key] = value;
+      if (typeof value !== "object") {
+        this.options[key] = value;
+      } else {
+        for (const [innerKey, innerValue] of Object.entries(value)) {
+          this.options[key][innerKey] = innerValue;
+        }
+      }
     }
 
     this.canvas = canvas;

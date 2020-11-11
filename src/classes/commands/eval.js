@@ -1,8 +1,7 @@
 import Command from "../constructors/drawingCommand";
 
-export default class FillCommand extends Command {
-  static params = {};
-
+export default class EvalCommand extends Command {
+  static params = { func: new Function() };
   constructor(options) {
     super(options);
   }
@@ -16,9 +15,8 @@ export default class FillCommand extends Command {
   prepare(main) {}
 
   async execute(progress) {
-    return new Promise((resolve) => {
-      this.ctx.setFillStyle = this.state.fillStyle;
-      this.ctx.fill();
+    return new Promise(async (resolve) => {
+      await this.options.func();
       resolve();
     });
   }

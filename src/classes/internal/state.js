@@ -15,6 +15,7 @@ export default class TurtleState extends InternalClass {
     this.size = initialState.size;
 
     this.lineWidth = initialState.lineWidth;
+    this.lineCap = initialState.lineCap;
     this.strokeStyle = initialState.strokeStyle;
 
     this.fillStyle = initialState.fillStyle;
@@ -32,6 +33,10 @@ export default class TurtleState extends InternalClass {
 
   setRotation(deg) {
     this.rotation = deg;
+  }
+
+  setSize(size) {
+    this.size = size;
   }
 
   setStrokeActive(value) {
@@ -52,6 +57,10 @@ export default class TurtleState extends InternalClass {
 
   setLineWidth(value) {
     this.lineWidth = value;
+  }
+
+  setLineCap(value) {
+    this.lineCap = value;
   }
 
   async setImage(url) {

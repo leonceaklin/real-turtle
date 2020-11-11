@@ -6,5 +6,10 @@ export default [
   "setStrokeActive",
   "setLineWidth",
   "beginPath",
+  "closePath",
   "fill",
+  "setLineCap",
+  "setSize",
+  "sleep",
+  "eval",
 ];

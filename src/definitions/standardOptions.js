@@ -6,6 +6,7 @@ export default {
     size: 15,
     strokeStyle: "black",
     fillStyle: "black",
+    lineCap: "butt",
     lineWidth: 1,
     speed: 1,
   },

@@ -15,15 +15,54 @@
 
   <script src="main.js"></script>
   <script type="text/javascript">
+
+  var gradient = turtle.ctx.createLinearGradient(0, 0, 170, 0);
+gradient.addColorStop("0", "magenta");
+gradient.addColorStop("0.5" ,"blue");
+gradient.addColorStop("1.0", "red");
+
     turtle
+    .setLineCap("round")
+    .setStrokeStyle("red")
+    .setLineWidth(20)
     .setStrokeActive(false)
-    .beginPath()
-    .move(100)
-    .turn(120)
-    .move(100)
-    .turn(120)
-    .move(100)
-    .fill();
+
+    turtle.move(100)
+    turtle.turn(-90)
+    turtle.move(200)
+    turtle.turn(90)
+
+    turtle.setStrokeActive(true)
+    for (var i = 0; i < 3; i++) {
+      turtle.turn(120).move(200)
+    }
+    turtle.setStrokeActive(false)
+
+    turtle.turn(90)
+    .move(220);
+
+    function drawRect(){
+      turtle.setStrokeActive(true)
+      .move(70)
+      .turn(90)
+      .move(200)
+      .turn(90)
+      .move(70)
+      .turn(90)
+      .move(200)
+      .turn(90)
+      turtle.setStrokeActive(false)
+    }
+
+    drawRect()
+
+    turtle.eval(() => {
+      alert("Funktion, die an dieser Stelle ausgeführt werden soll");
+    })
+
+    turtle.move(130)
+    drawRect()
+    turtle.setSize(0);
 
 
   </script>

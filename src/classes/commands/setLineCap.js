@@ -1,7 +1,9 @@
 import Command from "../constructors/drawingCommand";
 
-export default class FillCommand extends Command {
-  static params = {};
+export default class SetLineCapCommand extends Command {
+  static params = {
+    style: new String(),
+  };
 
   constructor(options) {
     super(options);
@@ -17,8 +19,7 @@ export default class FillCommand extends Command {
 
   async execute(progress) {
     return new Promise((resolve) => {
-      this.ctx.setFillStyle = this.state.fillStyle;
-      this.ctx.fill();
+      this.state.setLineCap(this.options.style);
       resolve();
     });
   }
