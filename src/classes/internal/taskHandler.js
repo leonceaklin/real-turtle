@@ -18,7 +18,6 @@ export default class TaskHandler extends InternalClass {
       return;
     }
 
-    this.ctx.restore();
     var angleInRadians = this.main.state.rotation * (Math.PI / 180);
 
     var x = this.main.state.position.x;
@@ -45,8 +44,6 @@ export default class TaskHandler extends InternalClass {
     for (var i = 0; i < this.tasks.length; i++) {
       this.taskEstimationCallbacks.push(this.tasks[i].estimate(this.main));
     }
-
-    console.log(this.taskEstimationCallbacks);
 
     this.executionFinished = false;
 
@@ -88,7 +85,9 @@ export default class TaskHandler extends InternalClass {
     }
 
     // Execute Task with progress
+    this.ctx.restore();
     await this.activeTask.execute(this.activeTaskProgress);
+    this.ctx.save();
 
     // If task is finished now
     if (this.activeTaskProgress == 1) {
@@ -100,10 +99,14 @@ export default class TaskHandler extends InternalClass {
       } else {
         this.activeTaskKey++;
         this.activeTask = this.tasks[this.activeTaskKey];
+        this.activeTaskEstimationCallback = this.activeTask.estimate(this.main);
         this.activeTask.prepare(this.main);
+
+        /* old version
         this.activeTaskEstimationCallback = this.taskEstimationCallbacks[
           this.activeTaskKey
         ];
+        */
         this.taskStartTime = new Date().getTime();
       }
     }

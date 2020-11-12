@@ -79,6 +79,12 @@ class Turtle {
     );
 
     this[name] = func;
+
+    if (command.aliases !== undefined) {
+      for (var i = 0; i < command.aliases.length; i++) {
+        this[command.aliases[i]] = func;
+      }
+    }
   }
 }
 

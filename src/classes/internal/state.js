@@ -39,6 +39,10 @@ export default class TurtleState extends InternalClass {
     this.size = size;
   }
 
+  setSpeed(speed) {
+    this.speed = speed;
+  }
+
   setStrokeActive(value) {
     this.strokeActive = value;
   }
