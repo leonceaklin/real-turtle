@@ -19,7 +19,7 @@ export default class Task {
 
   prepare(main) {
     this.preparationCallback = this.drawingCommand.prepareSuper(main);
-    main.logger.add("Executing task with command: " + this.name, this.options);
+    main.logger.add(`🐢 ${this.name}`, this.options);
     return this.preparationCallback;
   }
 

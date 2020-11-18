@@ -1,7 +1,9 @@
 import Command from "../constructors/drawingCommand";
 
-export default class FillCommand extends Command {
+export default class PenUpCommand extends Command {
   static params = {};
+
+  static aliases = ["up"];
 
   constructor(options) {
     super(options);
@@ -17,8 +19,7 @@ export default class FillCommand extends Command {
 
   async execute(progress) {
     return new Promise((resolve) => {
-      this.ctx.fillStyle = this.state.fillStyle;
-      this.ctx.fill();
+      this.state.setStrokeActive(false);
       resolve();
     });
   }

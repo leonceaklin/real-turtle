@@ -1,7 +1,9 @@
 import Command from "../constructors/drawingCommand";
 
-export default class FillCommand extends Command {
-  static params = {};
+export default class SetImageCommand extends Command {
+  static params = {
+    url: new String(),
+  };
 
   constructor(options) {
     super(options);
@@ -16,9 +18,8 @@ export default class FillCommand extends Command {
   prepare(main) {}
 
   async execute(progress) {
-    return new Promise((resolve) => {
-      this.ctx.fillStyle = this.state.fillStyle;
-      this.ctx.fill();
+    return new Promise(async (resolve) => {
+      await this.state.setImage(this.options.url);
       resolve();
     });
   }

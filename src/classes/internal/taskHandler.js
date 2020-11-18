@@ -64,19 +64,23 @@ export default class TaskHandler extends InternalClass {
   }
 
   async executeDrawingStep() {
-    var timeNow = new Date().getTime();
+    // Calculate progress
+    if (this.main.state.speed < 1) {
+      var timeNow = new Date().getTime();
 
-    if (this.activeTaskEstimationCallback.requiredTime == 0) {
-      this.activeTaskProgress = 1;
-    } else {
-      this.activeTaskProgress =
-        (timeNow - this.taskStartTime) /
-        this.activeTaskEstimationCallback.requiredTime;
-    }
-    if (this.activeTaskProgress >= 1) {
-      this.activeTaskProgress = 1;
+      if (this.activeTaskEstimationCallback.requiredTime == 0) {
+        this.activeTaskProgress = 1;
+      } else {
+        this.activeTaskProgress =
+          (timeNow - this.taskStartTime) /
+          this.activeTaskEstimationCallback.requiredTime;
+      }
+      if (this.activeTaskProgress >= 1) {
+        this.activeTaskProgress = 1;
+      }
     }
 
+    // Cache Canvas
     if (this.canvasCache !== null) {
       this.ctx.drawImage(this.canvasCache, 0, 0);
     } else {
@@ -84,9 +88,20 @@ export default class TaskHandler extends InternalClass {
       this.ctx.fillRect(0, 0, this.main.canvas.width, this.main.canvas.height);
     }
 
-    // Execute Task with progress
     this.ctx.restore();
-    await this.activeTask.execute(this.activeTaskProgress);
+
+    // Execute command
+
+    // Await with speed lower than 1 (process)
+    if (this.main.state.speed < 1) {
+      await this.activeTask.execute(this.activeTaskProgress);
+    }
+
+    // No waiting with speed 1
+    else {
+      this.activeTask.execute(1);
+    }
+
     this.ctx.save();
 
     // If task is finished now

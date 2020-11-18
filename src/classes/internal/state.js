@@ -20,6 +20,10 @@ export default class TurtleState extends InternalClass {
 
     this.fillStyle = initialState.fillStyle;
 
+    this.font = initialState.font;
+    this.textBaseline = initialState.textBaseline;
+    this.verticalAlign = initialState.verticalAlign;
+
     this.strokeActive = true;
     this.pathActive = false;
 
@@ -65,6 +69,18 @@ export default class TurtleState extends InternalClass {
 
   setLineCap(value) {
     this.lineCap = value;
+  }
+
+  setFont(value) {
+    this.font = value;
+  }
+
+  setTextBaseline(value) {
+    this.textBaseline = value;
+  }
+
+  setTextAlign(value) {
+    this.textAlign = value;
   }
 
   async setImage(url) {

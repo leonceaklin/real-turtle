@@ -9,36 +9,25 @@
 <body>
   <script src="../build/index.js"></script>
 
-  <canvas id="canvas" width="500" height="500"></canvas>
+  <canvas id="canvas" width="1200" height="1200"></canvas>
 
 
 
   <script src="main.js"></script>
   <script type="text/javascript">
 
-
-    turtle
-    .setLineCap("round")
-    .setStrokeStyle("blue")
-    .setLineWidth(1)
-    .setFillStyle("green")
-
-
-    for (var i = 0; i < 4; i++) {
-      turtle.forward(100).rt(90)
-      turtle.setFillStyle("blue").fill()
-    }
-
-    turtle.eval(() => {
-      turtle.ctx.rect(0,0,100,100)
-      turtle.ctx.fillStyle = "red"
-      turtle.ctx.fill()
-    })
-
-    turtle.back(100)
-
-
-
+      turtle
+      .setSpeed(0.5)
+      .right(90)
+      .setSize(0)
+      .down()
+      .setLineCap("round")
+      .setLineWidth(4)
+      .setFont("100px monospace")
+      .setStrokeStyle("green")
+      .setTextAlign("center")
+      .setTextBaseline("middle")
+      .fillText("Hello World!")
 
   </script>
 </body>

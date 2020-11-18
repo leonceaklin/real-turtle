@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Turtle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+</head>
+<body>
+  <script src="../build/index.js"></script>
+
+  <canvas id="canvas" width="1200" height="1200"></canvas>
+
+
+
+  <script src="main.js"></script>
+  <script type="text/javascript">
+
+    var t = turtle
+
+
+
+    function tree(branchLen,t){
+      if(branchLen > 5){
+        t.forward(branchLen)
+        t.right(20)
+        tree(branchLen-5,t)
+        t.left(40)
+        tree(branchLen-5,t)
+        t.right(20)
+        t.back(branchLen)
+      }
+    }
+
+    function main(){
+        t.setStrokeActive(false)
+        t.back(100)
+        t.setStrokeActive(true)
+
+        t.setLineCap("round")
+        t.setStrokeStyle("green")
+        t.setLineWidth(2)
+        t.setSpeed(1)
+
+        tree(75,t)
+      }
+
+      main()
+
+
+  </script>
+</body>
+</html>

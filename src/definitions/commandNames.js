@@ -9,11 +9,22 @@ export default [
 
   "arc",
 
+  "fillText",
+  "strokeText",
+
+  "penUp",
+  "penDown",
+
   "setStrokeStyle",
   "setFillStyle",
   "setStrokeActive",
   "setLineWidth",
   "setSpeed",
+  "setImage",
+  "setFont",
+  "setTextAlign",
+  "setTextBaseline",
+
   "beginPath",
   "closePath",
   "fill",
