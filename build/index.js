@@ -1,6 +1,6 @@
 /*!
  * 
- *   simple-turtle-graphics v1.0.0
+ *   real-turtle v1.0.2
  *   https://zebrapig.com
  *
  *   Copyright (c) Léonce Aklin

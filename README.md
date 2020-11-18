@@ -1,2 +1,2 @@
-# JS Turtle library
+# Real Turtle
 More information following soon

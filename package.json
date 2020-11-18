@@ -1,6 +1,6 @@
 {
-  "name": "simple-turtle-graphics",
-  "version": "1.0.1",
+  "name": "real-turtle",
+  "version": "1.0.2",
   "description": "A turtle library for JS beginners",
   "main": "build/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "author": "Léonce Aklin",
   "license": "MIT",
   "repository": {
-    "url": "https://zebrapig.com"
+    "url": "https://github.com/leonceaklin/real-turtle"
   },
   "homepage": "https://zebrapig.com",
   "keywords": [
@@ -40,11 +40,10 @@
     "terser-webpack-plugin": "^5.0.3",
     "url-loader": "^4.1.1",
     "webpack": "^5.4.0",
-    "webpack-cli": "^4.2.0"
-  },
-  "dependencies": {
+    "webpack-cli": "^4.2.0",
     "regenerator-runtime": "^0.13.7"
   },
+  "dependencies": {},
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/scripts/testMock.js",
