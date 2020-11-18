@@ -81,7 +81,7 @@ export default class ArcCommand extends Command {
 
         this.state.setPosition(xNow, yNow);
         this.state.setRotation(
-          currentAngle - (this.counterclockwise ? 0 : 180)
+          currentAngle - (this.options.counterclockwise ? 0 : 180)
         );
 
         this.ctx.stroke();

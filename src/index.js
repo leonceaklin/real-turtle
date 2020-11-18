@@ -13,7 +13,7 @@ for (var i = 0; i < commandNames.length; i++) {
     commandNames[i]).default;
 }
 
-class Turtle {
+class RealTurtle {
   constructor(canvas, options) {
     //Generate canvas if given element is not one
     if (canvas.tagName != "CANVAS") {
@@ -88,4 +88,4 @@ class Turtle {
   }
 }
 
-export default Turtle;
+export default RealTurtle;

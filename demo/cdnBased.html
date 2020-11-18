@@ -2,15 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Turtle</title>
+  <title>RealTurtle</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <script src="https://leonceaklin.com/cdn/simple-turtle-graphics/1.0.0/index.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/real-turtle"></script>
+  <canvas id="canvas"></canvas>
+  <script type="text/javascript" src="https://unpkg.com/real-turtle/build/helpers/simple.js"></script>
 
-  <canvas id="canvas" width="500" height="500"></canvas>
-
-  <script src="https://leonceaklin.com/cdn/simple-turtle-graphics/1.0.0/helpers/simple.js"></script>
 
   <script type="text/javascript">
 
@@ -49,10 +48,6 @@
     }
 
     drawRect()
-
-    turtle.eval(() => {
-      alert("Funktion, die an dieser Stelle ausgeführt werden soll");
-    })
 
     turtle.move(130)
     drawRect()
