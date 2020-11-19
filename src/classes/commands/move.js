@@ -30,6 +30,7 @@ export default class MoveCommand extends Command {
       if (this.state.strokeActive) {
         if (!this.state.pathActive) {
           this.ctx.beginPath();
+          console.log("beinning path");
         }
 
         this.ctx.moveTo(

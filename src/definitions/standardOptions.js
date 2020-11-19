@@ -7,6 +7,7 @@ export default {
     strokeStyle: "black",
     fillStyle: "black",
     lineCap: "butt",
+    lineJoin: "round",
     lineWidth: 1,
     speed: 1,
     font: "20px sans-serif",

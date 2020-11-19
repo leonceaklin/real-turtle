@@ -47,12 +47,17 @@ class RealTurtle {
       this.registerCommand(commandNames[i], commands[commandNames[i]]);
     }
 
+    if (this.options.autoStart == true) {
+      setTimeout(() => {
+        this.start();
+      }, 500);
+    }
+  }
+
+  start() {
+    // When imge loaded
     this.state.setImage(this.options.image).then(() => {
-      if (this.options.autoStart == true) {
-        setTimeout(() => {
-          this.taskHandler.executeTasks();
-        }, 500);
-      }
+      this.taskHandler.executeTasks();
     });
   }
 

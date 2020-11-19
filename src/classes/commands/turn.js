@@ -10,7 +10,7 @@ export default class TurnCommand extends Command {
   estimate(main) {
     return {
       requiredTime:
-        (1 - this.main.state.speed) * Math.abs(this.options.degrees) * 10,
+        (1 - this.main.state.speed) * Math.abs(this.options.degrees) * 6,
     };
   }
 

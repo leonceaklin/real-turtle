@@ -7,23 +7,16 @@
 </head>
 <body>
   <script src="../build/index.js"></script>
-  <canvas id="canvas"></canvas>
+  <canvas id="real-turtle"></canvas>
   <script src="../build/helpers/simple.js"></script>
 
   <script type="text/javascript">
 
       turtle
-      .setSpeed(0.5)
-      .right(90)
-      .setSize(30)
-      .down()
-      .setLineCap("round")
-      .setLineWidth(0)
-      .setFont("100px monospace")
-      .setStrokeStyle("green")
-      .setTextAlign("center")
-      .setTextBaseline("middle")
-      .fillText("Hello World!")
+      .setLineWidth(20)
+      .setLineJoin("round")
+      .beginPath()
+      .forward(100).left(50).forward(100)
 
   </script>
 </body>

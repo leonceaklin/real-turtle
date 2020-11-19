@@ -16,6 +16,7 @@ export default class TurtleState extends InternalClass {
 
     this.lineWidth = initialState.lineWidth;
     this.lineCap = initialState.lineCap;
+    this.lineJoin = initialState.lineJoin;
     this.strokeStyle = initialState.strokeStyle;
 
     this.fillStyle = initialState.fillStyle;
@@ -25,7 +26,7 @@ export default class TurtleState extends InternalClass {
     this.verticalAlign = initialState.verticalAlign;
 
     this.strokeActive = true;
-    this.pathActive = false;
+    this.pathActive = true;
 
     this.speed = initialState.speed;
     this.image = { url: null, object: null };
@@ -69,6 +70,10 @@ export default class TurtleState extends InternalClass {
 
   setLineCap(value) {
     this.lineCap = value;
+  }
+
+  setLineJoin(value) {
+    this.lineJoin = value;
   }
 
   setFont(value) {

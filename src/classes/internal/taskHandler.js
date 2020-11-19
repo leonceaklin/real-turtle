@@ -7,6 +7,8 @@ export default class TaskHandler extends InternalClass {
     super(main);
     this.tasks = [];
     this.ctx = this.main.ctx;
+
+    this.isExecuting = false;
   }
 
   addTask(name, options) {
@@ -34,6 +36,11 @@ export default class TaskHandler extends InternalClass {
   }
 
   executeTasks() {
+    if (this.isExecuting) {
+      return false;
+    }
+
+    this.isExecuting = true;
     this.drawTurtle();
 
     if (this.tasks.length == 0) {
@@ -110,6 +117,7 @@ export default class TaskHandler extends InternalClass {
 
       if (this.activeTaskKey + 1 == this.tasks.length) {
         this.executionFinished = true;
+        this.isExecuting = false;
         this.canvasCache = null;
       } else {
         this.activeTaskKey++;
