@@ -14,7 +14,6 @@ jobs:
         with:
           node-version: 12
       - run: npm install
-      - run: npm run test -- --coverage --watchAll=false
         
       - name: Setup GIT
         run: |
@@ -22,7 +21,7 @@ jobs:
           git config --local --list
           git checkout master
           git config user.email "$GH_EMAIL"
-          git config user.name "Francisco Hodge"
+          git config user.name "Léonce Aklin"
         env:
             GH_EMAIL: ${{secrets.GH_EMAIL}}
           
