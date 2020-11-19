@@ -34,7 +34,7 @@ styleTag.innerHTML = `
     padding: 0;
   }
 
-  canvas{
+  #real-turtle, #real-turtle canvas{
     position: absolute;
     width: 100%;
     height: 100%;
