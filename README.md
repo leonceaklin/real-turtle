@@ -46,7 +46,7 @@ Include the helper script tag below your RealTurtle HTML element.
 ##### Working Example using a helper
 ```html
 <script type="text/javascript" src="https://unpkg.com/real-turtle"></script>
-<canvas id="canvas"></canvas>
+<canvas id="real-turtle"></canvas>
 <script type="text/javascript" src="https://unpkg.com/real-turtle/dist/helpers/simple.js"></script>
 
 <script type="text/javascript">
