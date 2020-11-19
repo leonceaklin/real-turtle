@@ -9,11 +9,11 @@ let options = {
 };
 
 
-var element = document.getElementById("canvas");
+var element = document.getElementById("real-turtle");
 
 if(element == undefined){
   element = document.createElement("canvas")
-  element.id = "canvas"
+  element.id = "real-turtle"
   document.body.append(element)
   console.warn("Turtle helper could not find en existing canvas element. Created a custom one", element)
 }
