@@ -19,7 +19,7 @@ Create a RealTurtle Instance
 const turtle = new RealTurtle(element, options)
 ```
 
-### Via CDN
+### Via CDN (in the browser)
 #### General
 Include a the script tag above your command code
 ```html
@@ -32,10 +32,24 @@ If you want full control
 var turtle = new RealTurtle.default(element, options)
 ```
 
-#### With helper
-If you are a JavaScript beginner who wants to get started quickly
+#### With a helper
+If you are a JavaScript beginner who wants to get started quickly, a helper is recommended. It creates a RealTurtle instance with predefined options and makes it acessible through a global turtle variable. All you need to provide is an HTML-Element with the id `#real-turtle`
 
-Include the helper script tag below the 
+> Note: The helper is only recommended for simple use cases such as playgrounds.
+
+Include the helper script tag below your RealTurtle HTML element.
+
 ```html
+<script type="text/javascript" src="https://unpkg.com/real-turtle/dist/helpers/simple.js"></script>
+```
 
+##### Working Example using a helper
+```html
+<script type="text/javascript" src="https://unpkg.com/real-turtle"></script>
+<canvas id="canvas"></canvas>
+<script type="text/javascript" src="https://unpkg.com/real-turtle/dist/helpers/simple.js"></script>
+
+<script type="text/javascript">
+turtle.forward(100)
+</script>
 ```
