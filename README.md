@@ -33,7 +33,7 @@ var turtle = new RealTurtle.default(element, options)
 ```
 
 #### With a helper
-If you are a JavaScript beginner who wants to get started quickly, a helper is recommended. It creates a RealTurtle instance with predefined options and makes it acessible through a global turtle variable. All you need to provide is an HTML-Element with the id `#real-turtle`
+If you are a JavaScript beginner who wants to get started quickly, a helper is recommended. It creates a RealTurtle instance with predefined options and makes it acessible through a global turtle variable. All you need to provide is an HTML-Element with the ID `#real-turtle`
 
 > Note: The helper is only recommended for simple use cases such as playgrounds.
 
