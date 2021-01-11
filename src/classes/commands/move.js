@@ -30,17 +30,16 @@ export default class MoveCommand extends Command {
       if (this.state.strokeActive) {
         if (!this.state.pathActive) {
           this.ctx.beginPath();
-          console.log("beinning path");
         }
 
         this.ctx.moveTo(
           this.initialState.position.x,
           this.initialState.position.y
         );
-        this.ctx.lineCap = this.state.lineCap;
+        this.ctx.lineCap = this.initialState.lineCap;
         this.ctx.lineTo(xNow, yNow);
-        this.ctx.strokeStyle = this.state.strokeStyle;
-        this.ctx.lineWidth = this.state.lineWidth;
+        this.ctx.strokeStyle = this.initialState.strokeStyle;
+        this.ctx.lineWidth = this.initialState.lineWidth;
         this.ctx.stroke();
       }
 

@@ -6,7 +6,7 @@ export default {
     size: 15,
     strokeStyle: "black",
     fillStyle: "black",
-    lineCap: "butt",
+    lineCap: "round",
     lineJoin: "round",
     lineWidth: 1,
     speed: 1,

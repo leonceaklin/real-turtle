@@ -113,7 +113,7 @@ export default class TaskHandler extends InternalClass {
 
     // If task is finished now
     if (this.activeTaskProgress == 1) {
-      this.cacheCanvas();
+      await this.cacheCanvas();
 
       if (this.activeTaskKey + 1 == this.tasks.length) {
         this.executionFinished = true;
@@ -137,18 +137,25 @@ export default class TaskHandler extends InternalClass {
     this.drawTurtle();
 
     if (!this.executionFinished) {
-      window.requestAnimationFrame(() => {
+      if (this.main.state.speed < 1) {
+        window.requestAnimationFrame(() => {
+          this.executeDrawingStep();
+        });
+      } else {
         this.executeDrawingStep();
-      });
+      }
     }
   }
 
-  cacheCanvas() {
-    if (this.canvasCache == undefined) {
-      this.canvasCache = document.createElement("canvas");
-    }
-    this.canvasCache.width = this.main.canvas.width;
-    this.canvasCache.height = this.main.canvas.height;
-    this.canvasCache.getContext("2d").drawImage(this.main.canvas, 0, 0);
+  async cacheCanvas() {
+    return new Promise((resolve) => {
+      if (this.canvasCache == undefined) {
+        this.canvasCache = document.createElement("canvas");
+      }
+      this.canvasCache.width = this.main.canvas.width;
+      this.canvasCache.height = this.main.canvas.height;
+      this.canvasCache.getContext("2d").drawImage(this.main.canvas, 0, 0);
+      resolve();
+    });
   }
 }

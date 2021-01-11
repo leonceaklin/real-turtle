@@ -1,7 +1,7 @@
 let RealTurtle = window.RealTurtle.default;
 
 let options = {
-  verbose: true,
+  verbose: false,
   autoStart: true,
   state: {
     speed: 0.5

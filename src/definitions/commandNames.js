@@ -16,6 +16,8 @@ export default [
   "penDown",
 
   "setStrokeStyle",
+  "setStrokeColorRGB",
+  "setStrokeColorHSL",
   "setFillStyle",
   "setStrokeActive",
   "setLineWidth",
@@ -26,6 +28,8 @@ export default [
   "setFont",
   "setTextAlign",
   "setTextBaseline",
+
+  "setPosition",
 
   "beginPath",
   "closePath",
