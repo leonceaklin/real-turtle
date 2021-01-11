@@ -2,7 +2,7 @@
 
 A simple yet powerful turtle graphics library for JavaScript. It aims to make turtle graphics in JavaScript as simple as possible while giving insights to HTML canvas by staying close to its spec
 
-[Try it out🚀](https://repl.it/@leonceaklin/RealTurtleSimpleTemplate)
+<a href="https://repl.it/@leonceaklin/RealTurtleSimpleTemplate" target="_blank">Try it out🚀</a>
 
 ## Getting started
 
