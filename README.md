@@ -135,8 +135,7 @@ Unless you are using `autoStart` or a helper, your turtle will only move if you 
 
 | Command            | Description                             | Arguments                                                  | Aliases |
 | ------------------ | --------------------------------------- | ---------------------------------------------------------- | ------- |
-| `.setPosition(x, y)` | Sets the position of your turtle on the canvas      | - `x`: X-coordinate of the position<br/> -`y`: Y-coordinate of the position |         |
-
+| `.setPosition(x, y)` | Sets the position of your turtle on the canvas      | - `x`: X-coordinate of the position<br/> -`y`: Y-coordinate of the position |       
 | `.setSpeed(speed)` | Defines how fast your turtle moves      | - `speed`: Number: From 0 (super slow) to 1 (blazing fast) |         |
 | `.setSize(size)`   | Sets the size of the turtle             | - `size`: Number: The size of the turtle in px             |         |
 | `.setImage(url)`   | Sets the skin of the turtle to an image | - `url`: String: The URL of the image                      |         |
