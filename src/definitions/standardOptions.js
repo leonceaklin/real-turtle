@@ -9,7 +9,7 @@ export default {
     lineCap: "round",
     lineJoin: "round",
     lineWidth: 1,
-    speed: 1,
+    speed: 0.5,
     font: "20px sans-serif",
     textAlign: "left",
     textBaseline: "alphabetic",

@@ -15,6 +15,10 @@ for (var i = 0; i < commandNames.length; i++) {
 
 class RealTurtle {
   constructor(canvas, options) {
+    if (Object.prototype.toString.call(canvas) === "[object String]") {
+      canvas = document.querySelector(canvas);
+    }
+
     //Generate canvas if given element is not one
     if (canvas.tagName != "CANVAS") {
       var canvasElement = document.createElement("canvas");
@@ -78,8 +82,28 @@ class RealTurtle {
         for (var i = 0; i < arguments.length; i++) {
           options[paramNames[i]] = arguments[i];
         }
+
+        if(this.options.async) {
+          this.taskHandler.tasks = [];
+          if(this.state.speed == 1){
+            this.state.speed = 0.9;
+          }
+        }
+
         this.taskHandler.addTask("${name}", options);
-        return this;
+
+        if(this.options.async) {
+          if(this.state.imageSet){
+            return this.taskHandler.executeTasks();
+          }
+          else{
+            return this.state.setImage(this.options.image).then(() => this.taskHandler.executeTasks());
+          }
+        }
+
+        else {
+          return this;
+        }
     `
     );
 

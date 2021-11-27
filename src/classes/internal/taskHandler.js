@@ -7,6 +7,7 @@ export default class TaskHandler extends InternalClass {
     super(main);
     this.tasks = [];
     this.ctx = this.main.ctx;
+    this.canvasCache = null;
 
     this.isExecuting = false;
   }
@@ -35,38 +36,49 @@ export default class TaskHandler extends InternalClass {
     this.ctx.translate(-x, -y);
   }
 
-  executeTasks() {
-    if (this.isExecuting) {
-      return false;
-    }
+  async executeTasks() {
+    return new Promise((resolve, reject) => {
+      if (this.isExecuting) {
+        reject();
+        return;
+      }
 
-    this.isExecuting = true;
-    this.drawTurtle();
+      this.isExecuting = true;
+      this.drawTurtle();
 
-    if (this.tasks.length == 0) {
-      return false;
-    }
+      if (this.tasks.length == 0) {
+        reject();
+        return;
+      }
 
-    this.taskEstimationCallbacks = [];
-    for (var i = 0; i < this.tasks.length; i++) {
-      this.taskEstimationCallbacks.push(this.tasks[i].estimate(this.main));
-    }
+      //Resolve when finished
+      this.onExecutionFinished = () => {
+        resolve();
+      };
 
-    this.executionFinished = false;
+      this.taskEstimationCallbacks = [];
+      for (var i = 0; i < this.tasks.length; i++) {
+        this.taskEstimationCallbacks.push(this.tasks[i].estimate(this.main));
+      }
 
-    this.executionStartTime = new Date().getTime();
-    this.taskStartTime = this.executionStartTime;
+      this.executionFinished = false;
 
-    this.activeTaskKey = 0;
-    this.activeTask = this.tasks[0];
-    this.activeTaskEstimationCallback = this.taskEstimationCallbacks[0];
-    this.activeTaskProgress = 0;
+      this.executionStartTime = new Date().getTime();
+      this.taskStartTime = this.executionStartTime;
 
-    this.canvasCache = null;
+      this.activeTaskKey = 0;
+      this.activeTask = this.tasks[0];
+      this.activeTaskEstimationCallback = this.taskEstimationCallbacks[0];
+      this.activeTaskProgress = 0;
 
-    this.activeTask.prepare(this.main);
-    window.requestAnimationFrame(() => {
-      this.executeDrawingStep();
+      if (!this.main.options.async) {
+        this.canvasCache = null;
+      }
+
+      this.activeTask.prepare(this.main);
+      window.requestAnimationFrame(() => {
+        this.executeDrawingStep();
+      });
     });
   }
 
@@ -117,8 +129,18 @@ export default class TaskHandler extends InternalClass {
 
       if (this.activeTaskKey + 1 == this.tasks.length) {
         this.executionFinished = true;
+
+        try {
+          this.onExecutionFinished();
+        } catch (e) {
+          //nothing
+        }
+
         this.isExecuting = false;
-        this.canvasCache = null;
+
+        if (!this.main.options.async) {
+          this.canvasCache = null;
+        }
       } else {
         this.activeTaskKey++;
         this.activeTask = this.tasks[this.activeTaskKey];

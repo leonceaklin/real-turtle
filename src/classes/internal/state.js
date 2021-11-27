@@ -94,6 +94,7 @@ export default class TurtleState extends InternalClass {
 
       image.onload = () => {
         this.image.object = image;
+        this.imageSet = true;
         resolve();
       };
 

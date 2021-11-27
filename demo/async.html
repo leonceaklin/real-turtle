@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>RealTurtle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <script src="../build/index.js"></script>
+  <canvas id="real-turtle" width="1000px" height="1000px"></canvas>
+
+  <script type="text/javascript">
+  var turtle = new RealTurtle.default('#real-turtle', {verbose: true, async: true})
+
+  async function start(){
+    await turtle.setPosition(500, 500);
+    await turtle.forward(100);
+    await turtle.left(90);
+    await turtle.forward(100);
+    console.log(turtle.state.position);
+    await turtle.right(90);
+    await turtle.forward(100);
+    await turtle.arc(200, 100, 100)
+  }
+
+  start();
+  </script>
+</body>
+</html>
