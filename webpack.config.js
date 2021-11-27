@@ -12,7 +12,7 @@ const {
   author,
 } = getPackageJson('version', 'name', 'license', 'repository', 'author');
 
-var helperNames = ["simple"]
+var helperNames = ["simple", "asyncSimple"]
 
 const banner = `
   ${name} v${version}
