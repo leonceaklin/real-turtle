@@ -134,8 +134,6 @@ export default class TaskHandler extends InternalClass {
       this.activeTaskProgress = 1;
     }
 
-    console.log(this.main.state.speed);
-
     // Draw previous canvas onto main canvas
     if (this.prevoiusCanvas !== null) {
       this.ctx.drawImage(this.previousCanvas, 0, 0);
