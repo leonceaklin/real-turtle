@@ -109,8 +109,6 @@ async function run(){
 run()
 ```
 
-
-
 ## Commands
 
 ### `.start()` the most important command at the end of your script if you don't use async mode
@@ -131,15 +129,16 @@ Unless you are using `autoStart` or a helper, your turtle will only move if you 
 
 ### Drawing
 
-| Command             | Description                                                                          | Arguments                                              | Aliases |
-| ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------ | ------- |
-| `.penDown()`        | Activates the pen of your turtle so that it draws a line when moving around          |                                                        |         |
-| `.penUp()`          | Deactivates the pen of your turtle so that the canvas stays blank when moving around |                                                        |         |
-| `.beginPath()`      | Tells the turtle to begin a new path which can later be closed or filled             |                                                        |         |
-| `.closePath()`      | Tells the turtle to close the current path                                           |                                                        |         |
-| `.fill()`           | Tells the turtle to fill the current path with the current `fillStyle`               |                                                        |         |
-| `.fillText(text)`   | Lets the turtle write text onto the canvas, filled with the current `fillStyle`      | - `text`: String: The text which the turtle will write |         |
-| `.strokeText(text)` | Lets the turtle write text onto the canvas with a border and no fill                 | - `text`: String: The text which the turtle will write |         |
+| Command             | Description                                                                                                                                                  | Arguments                                              | Aliases |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ | ------- |
+| `.penDown()`        | Activates the pen of your turtle so that it draws a line when moving around                                                                                  |                                                        |         |
+| `.penUp()`          | Deactivates the pen of your turtle so that the canvas stays blank when moving around                                                                         |                                                        |         |
+| `.beginPath()`      | Tells the turtle to begin a new path which can later be closed or filles. Be aware that a path can only have one stroke style, just like a HTML canvas path. |                                                        |         |
+| `.closePath()`      | Tells the turtle to close the current path                                                                                                                   |                                                        |         |
+| `.stroke()`         | Draws a stroke from the first to the last point of a path. Its basically the HTML canvas' `.stroke()`                                                        |                                                        |         |
+| `.fill()`           | Tells the turtle to fill the current path with the current `fillStyle`                                                                                       |                                                        |         |
+| `.fillText(text)`   | Lets the turtle write text onto the canvas, filled with the current `fillStyle`                                                                              | - `text`: String: The text which the turtle will write |         |
+| `.strokeText(text)` | Lets the turtle write text onto the canvas with a border and no fill                                                                                         | - `text`: String: The text which the turtle will write |         |
 
 ### Setting visual parameters
 
