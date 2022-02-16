@@ -16,7 +16,7 @@ export default class SetSizeCommand extends Command {
     this.sizeDifference = this.options.size - this.initialState.size;
   }
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
       this.state.setSize(
         this.initialState.size + this.sizeDifference * progress

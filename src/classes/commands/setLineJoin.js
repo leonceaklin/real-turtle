@@ -17,8 +17,9 @@ export default class SetLineJoinCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
+      ctx.lineJoin = this.options.style;
       this.state.setLineJoin(this.options.style);
       resolve();
     });

@@ -14,7 +14,7 @@ export default class MoveCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
       var xNow = this.options.x + this.initialState.position.x * (1 - progress);
       var yNow = this.options.y + this.initialState.position.y * (1 - progress);

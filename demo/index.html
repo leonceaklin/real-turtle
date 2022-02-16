@@ -6,6 +6,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  <script>
+  function hookCanvasGetContext () {
+    var ctxFns = [
+        'fillRect',
+        'save',
+        'restore',
+        'scale',
+        'rotate',
+        'translate',
+        'transform',
+        'setTransform',
+        'resetTransform',
+        'createLinearGradient',
+        'createRadialGradient',
+        'createPattern',
+        'clearRect',
+        'strokeRect',
+        'beginPath',
+        'fill',
+        'stroke',
+        'drawFocusIfNeeded',
+        'clip',
+        'isPointInPath',
+        'isPointInStroke',
+        'fillText',
+        'strokeText',
+        'measureText',
+        'drawImage',
+        'createImageData',
+        'getImageData',
+        'putImageData',
+        'getContextAttributes',
+        'setLineDash',
+        'getLineDash',
+        'setAlpha',
+        'setCompositeOperation',
+        'setLineWidth',
+        'setLineCap',
+        'setLineJoin',
+        'setMiterLimit',
+        'clearShadow',
+        'setStrokeColor',
+        'setFillColor',
+        'drawImageFromRect',
+        'setShadow',
+        'closePath',
+        'moveTo',
+        'lineTo',
+        'quadraticCurveTo',
+        'bezierCurveTo',
+        'arcTo',
+        'rect',
+        'arc',
+        'ellipse',
+        'scrollPathIntoView',
+        'addHitRegion',
+        'removeHitRegion',
+        'clearHitRegions',
+        'isContextLost'
+    ];
+
+    var origGetContext = HTMLCanvasElement.prototype.getContext;
+    var callsMade = [];
+
+    function hookFunc (ctx, name) {
+        var origFn = ctx[name];
+        ctx[name] = function () {
+            callsMade.push([name, arguments]);
+            return origFn.apply(this, arguments);
+        };
+    }
+
+    window.printCanvasCalls = function () {
+        callsMade.forEach(function (c) {
+            console.log(c[0], c[1]);
+        })
+    };
+
+    HTMLCanvasElement.prototype.getContext = function () {
+        var ctx = origGetContext.apply(this, arguments);
+        ctxFns.forEach(function (fnName) {
+            hookFunc(ctx, fnName);
+        });
+
+        return ctx;
+    }
+}
+
+hookCanvasGetContext()
+</script>
   <script src="../build/index.js"></script>
   <canvas id="real-turtle"></canvas>
   <script src="../build/helpers/simple.js"></script>
@@ -21,9 +111,18 @@
     }
   }
 
-  turtle.setLineCap("round")
-  .setLineWidth(10)
-  form(8);
+  turtle.setLineCap("round").setLineWidth(10).setLineJoin("round")
+  .beginPath()
+  .forward(90)
+  .left(90)
+  .forward(90)
+  .left(90)
+  .forward(90)
+  .left(90)
+  .closePath()
+  .stroke()
+  .fill()
+  .turn()
 
   </script>
 </body>

@@ -17,8 +17,9 @@ export default class SetLineCapCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
+      ctx.lineCap = this.options.style;
       this.state.setLineCap(this.options.style);
       resolve();
     });

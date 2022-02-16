@@ -17,8 +17,9 @@ export default class SetLineWidthCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
+      ctx.lineWidth = this.options.width;
       this.state.setLineWidth(this.options.width);
       resolve();
     });

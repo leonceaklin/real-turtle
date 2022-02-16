@@ -7,7 +7,8 @@ export default class TaskHandler extends InternalClass {
     super(main);
     this.tasks = [];
     this.ctx = this.main.ctx;
-    this.canvasCache = null;
+    this.canvas = this.main.canvas;
+    this.cacheCanvas = null;
 
     this.isExecuting = false;
   }
@@ -44,7 +45,14 @@ export default class TaskHandler extends InternalClass {
       }
 
       this.isExecuting = true;
-      this.drawTurtle();
+
+      if (!this.main.options.async) {
+        this.cacheCanvas = null;
+        this.previousCanvas = null;
+
+        this.ctx.fillStyle = "#ffffff";
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      }
 
       if (this.tasks.length == 0) {
         reject();
@@ -70,10 +78,32 @@ export default class TaskHandler extends InternalClass {
       this.activeTask = this.tasks[0];
       this.activeTaskEstimationCallback = this.taskEstimationCallbacks[0];
       this.activeTaskProgress = 0;
+      this.activeTaskFirstPaint = true;
 
-      if (!this.main.options.async) {
-        this.canvasCache = null;
+      if (!this.cacheCanvas) {
+        //Create the cache canvas which gets updated once a step is finished
+        //It enables the library to ensure that canvas steps are executed "natively" regardless of any animations
+        //.fill() is made possible by this for example
+
+        this.cacheCanvas = document.createElement("canvas");
+        this.cacheCanvas.width = this.canvas.width;
+        this.cacheCanvas.height = this.canvas.height;
+        this.cacheCtx = this.cacheCanvas.getContext("2d");
+        this.cacheCtx.drawImage(this.canvas, 0, 0);
+        document.body.append(this.cacheCanvas);
       }
+
+      if (!this.previousCanvas) {
+        //Create the cache canvas which gets updated everytime a new step is finished
+
+        this.previousCanvas = document.createElement("canvas");
+        this.previousCanvas.width = this.canvas.width;
+        this.previousCanvas.height = this.canvas.height;
+        this.previousCtx = this.previousCanvas.getContext("2d");
+        this.previousCtx.drawImage(this.canvas, 0, 0);
+      }
+
+      this.drawTurtle();
 
       this.activeTask.prepare(this.main);
       window.requestAnimationFrame(() => {
@@ -99,34 +129,39 @@ export default class TaskHandler extends InternalClass {
       }
     }
 
-    // Cache Canvas
-    if (this.canvasCache !== null) {
-      this.ctx.drawImage(this.canvasCache, 0, 0);
+    // Draw previous canvas onto main canvas
+    if (this.prevoiusCanvas !== null) {
+      this.ctx.drawImage(this.previousCanvas, 0, 0);
     } else {
       this.ctx.fillStyle = "#ffffff";
-      this.ctx.fillRect(0, 0, this.main.canvas.width, this.main.canvas.height);
+      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    this.ctx.restore();
+    //Draw the completed Task onto the cache canvas
+    if (this.activeTaskFirstPaint) {
+      if (this.main.state.speed < 1) {
+        await this.activeTask.execute(1, this.cacheCtx);
+      } else {
+        this.activeTask.execute(1, this.cacheCtx);
+      }
+    }
 
     // Execute command
 
     // Await with speed lower than 1 (process)
     if (this.main.state.speed < 1) {
-      await this.activeTask.execute(this.activeTaskProgress);
+      await this.activeTask.execute(this.activeTaskProgress, this.ctx);
     }
 
     // No waiting with speed 1
     else {
-      this.activeTask.execute(1);
+      this.activeTask.execute(1, this.ctx);
     }
 
-    this.ctx.save();
+    this.activeTaskFirstPaint = false;
 
     // If task is finished now
     if (this.activeTaskProgress == 1) {
-      await this.cacheCanvas();
-
       if (this.activeTaskKey + 1 == this.tasks.length) {
         this.executionFinished = true;
 
@@ -139,13 +174,19 @@ export default class TaskHandler extends InternalClass {
         this.isExecuting = false;
 
         if (!this.main.options.async) {
-          this.canvasCache = null;
+          this.cacheCanvas = null;
         }
       } else {
+        this.activeTaskFirstPaint = true;
         this.activeTaskKey++;
         this.activeTask = this.tasks[this.activeTaskKey];
         this.activeTaskEstimationCallback = this.activeTask.estimate(this.main);
         this.activeTask.prepare(this.main);
+
+        //Draw current canvas onto previous canvas
+        if (this.previousCtx && this.cacheCanvas) {
+          this.previousCtx.drawImage(this.cacheCanvas, 0, 0);
+        }
 
         /* old version
         this.activeTaskEstimationCallback = this.taskEstimationCallbacks[
@@ -167,17 +208,5 @@ export default class TaskHandler extends InternalClass {
         this.executeDrawingStep();
       }
     }
-  }
-
-  async cacheCanvas() {
-    return new Promise((resolve) => {
-      if (this.canvasCache == undefined) {
-        this.canvasCache = document.createElement("canvas");
-      }
-      this.canvasCache.width = this.main.canvas.width;
-      this.canvasCache.height = this.main.canvas.height;
-      this.canvasCache.getContext("2d").drawImage(this.main.canvas, 0, 0);
-      resolve();
-    });
   }
 }

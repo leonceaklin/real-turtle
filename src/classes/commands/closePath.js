@@ -15,9 +15,9 @@ export default class ClosePathCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
-      this.ctx.closePath();
+      ctx.closePath();
       this.state.setPathActive(false);
       resolve();
     });

@@ -49,7 +49,7 @@ export default class ArcCommand extends Command {
       (this.options.counterclockwise ? 0 : 180) + this.initialState.rotation;
   }
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
       var currentAngle =
         this.arcStartAngle +
@@ -64,27 +64,30 @@ export default class ArcCommand extends Command {
         this.arcCenterY +
         Math.sin(currentAngle * (Math.PI / 180)) * this.options.radius;
 
+      if (!this.state.pathActive) {
+        ctx.beginPath();
+      }
+
+      ctx.arc(
+        this.arcCenterX,
+        this.arcCenterY,
+        this.options.radius,
+        this.arcStartAngle * (Math.PI / 180),
+        currentAngle * (Math.PI / 180),
+        this.options.counterclockwise
+      );
+
+      this.state.setPosition(xNow, yNow);
+      this.state.setRotation(
+        currentAngle - (this.options.counterclockwise ? 0 : 180)
+      );
+
       if (this.state.strokeActive) {
-        this.ctx.beginPath();
-        this.ctx.strokeStyle = this.state.strokeStyle;
-        this.ctx.lineWidth = this.state.lineWidth;
-        this.ctx.lineCap = this.state.lineCap;
+        ctx.stroke();
+      }
 
-        this.ctx.arc(
-          this.arcCenterX,
-          this.arcCenterY,
-          this.options.radius,
-          this.arcStartAngle * (Math.PI / 180),
-          currentAngle * (Math.PI / 180),
-          this.options.counterclockwise
-        );
-
-        this.state.setPosition(xNow, yNow);
-        this.state.setRotation(
-          currentAngle - (this.options.counterclockwise ? 0 : 180)
-        );
-
-        this.ctx.stroke();
+      if (!this.state.pathActive) {
+        ctx.closePath();
       }
 
       resolve();

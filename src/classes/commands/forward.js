@@ -21,9 +21,9 @@ export default class ForwardCommand extends Command {
     return this.moveCommand.prepareSuper(main);
   }
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise(async (resolve) => {
-      await this.moveCommand.execute(progress);
+      await this.moveCommand.execute(progress, ctx);
       resolve();
     });
   }

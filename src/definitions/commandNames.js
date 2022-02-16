@@ -34,6 +34,7 @@ export default [
   "beginPath",
   "closePath",
   "fill",
+  "stroke",
   "setLineCap",
   "setSize",
   "sleep",

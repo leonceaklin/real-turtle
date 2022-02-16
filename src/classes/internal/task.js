@@ -23,9 +23,9 @@ export default class Task {
     return this.preparationCallback;
   }
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise(async (resolve) => {
-      await this.drawingCommand.execute(progress);
+      await this.drawingCommand.execute(progress, ctx);
       resolve();
     });
   }

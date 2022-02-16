@@ -17,7 +17,7 @@ export default class SetIconCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise(async (resolve) => {
       var icon = this.options.icon;
 

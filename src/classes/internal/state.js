@@ -26,7 +26,7 @@ export default class TurtleState extends InternalClass {
     this.verticalAlign = initialState.verticalAlign;
 
     this.strokeActive = true;
-    this.pathActive = true;
+    this.pathActive = false;
 
     this.speed = initialState.speed;
     this.image = { url: null, object: null };

@@ -1,6 +1,6 @@
 import Command from "../constructors/drawingCommand";
 
-export default class FillCommand extends Command {
+export default class StrokeCommand extends Command {
   static params = {};
 
   constructor(options) {
@@ -19,8 +19,7 @@ export default class FillCommand extends Command {
     return new Promise((resolve) => {
       if (progress == 1) {
         ctx.globalAlpha = 1;
-        ctx.fillStyle = this.state.fillStyle;
-        ctx.fill();
+        ctx.stroke();
         resolve();
       } else {
         ctx.globalAlpha = 1;

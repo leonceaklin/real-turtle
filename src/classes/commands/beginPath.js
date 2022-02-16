@@ -15,9 +15,10 @@ export default class BeginPathCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
-      this.ctx.beginPath();
+      ctx.beginPath();
+      ctx.moveTo(this.initialState.position.x, this.initialState.position.y);
       this.state.setPathActive(true);
       resolve();
     });

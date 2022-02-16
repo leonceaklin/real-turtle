@@ -21,9 +21,9 @@ export default class SetStrokeColorRGBCommand extends Command {
     return this.setStrokeStyleCommand.prepareSuper(main);
   }
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise(async (resolve) => {
-      await this.setStrokeStyleCommand.execute(progress);
+      await this.setStrokeStyleCommand.execute(progress, ctx);
       resolve();
     });
   }

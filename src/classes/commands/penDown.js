@@ -17,7 +17,7 @@ export default class PenDownCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
       this.state.setStrokeActive(true);
       resolve();

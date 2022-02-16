@@ -17,7 +17,7 @@ export default class SetImageCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise(async (resolve) => {
       await this.state.setImage(this.options.url);
       resolve();

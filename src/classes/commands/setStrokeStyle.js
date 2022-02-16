@@ -17,12 +17,13 @@ export default class SetStrokeStyleCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
       this.state.setStrokeStyle(this.options.style);
+      ctx.strokeStyle = this.options.style;
 
       //To avoid color change of already drawn elements
-      this.ctx.beginPath();
+      //ctx.beginPath();
 
       resolve();
     });

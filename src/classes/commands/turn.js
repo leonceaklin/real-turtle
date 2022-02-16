@@ -8,6 +8,9 @@ export default class TurnCommand extends Command {
   }
 
   estimate(main) {
+    if (!this.options.degrees) {
+      this.options.degrees = this.main.state.rotation * -1;
+    }
     return {
       requiredTime:
         (1 - this.main.state.speed) * Math.abs(this.options.degrees) * 6,
@@ -16,7 +19,7 @@ export default class TurnCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
       this.state.setRotation(
         this.initialState.rotation + this.options.degrees * progress

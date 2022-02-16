@@ -12,11 +12,16 @@ export default class EvalCommand extends Command {
     };
   }
 
-  prepare(main) {}
+  prepare(main) {
+    this.executed = false;
+  }
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise(async (resolve) => {
-      await this.options.func();
+      if (!this.executed) {
+        await this.options.func();
+      }
+      this.executed = true;
       resolve();
     });
   }

@@ -14,7 +14,7 @@ export default class ExampleCommand extends Command {
 
   prepare(main) {}
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
       resolve();
     });

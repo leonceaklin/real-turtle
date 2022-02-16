@@ -22,25 +22,24 @@ export default class MoveCommand extends Command {
       this.options.steps;
   }
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise((resolve) => {
       var xNow = this.initialState.position.x + this.moveX * progress;
       var yNow = this.initialState.position.y + this.moveY * progress;
 
-      if (this.state.strokeActive) {
-        if (!this.state.pathActive) {
-          this.ctx.beginPath();
-        }
+      if (!this.state.pathActive) {
+        ctx.beginPath();
+        ctx.moveTo(this.initialState.position.x, this.initialState.position.y);
+      }
 
-        this.ctx.moveTo(
-          this.initialState.position.x,
-          this.initialState.position.y
-        );
-        this.ctx.lineCap = this.initialState.lineCap;
-        this.ctx.lineTo(xNow, yNow);
-        this.ctx.strokeStyle = this.initialState.strokeStyle;
-        this.ctx.lineWidth = this.initialState.lineWidth;
-        this.ctx.stroke();
+      ctx.lineTo(xNow, yNow);
+
+      if (this.state.strokeActive) {
+        ctx.stroke();
+      }
+
+      if (!this.state.pathActive) {
+        ctx.closePath();
       }
 
       this.state.setPosition(xNow, yNow);

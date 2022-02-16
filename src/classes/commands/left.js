@@ -21,9 +21,9 @@ export default class LeftCommand extends Command {
     return this.turnCommand.prepareSuper(main);
   }
 
-  async execute(progress) {
+  async execute(progress, ctx) {
     return new Promise(async (resolve) => {
-      await this.turnCommand.execute(progress);
+      await this.turnCommand.execute(progress, ctx);
       resolve();
     });
   }

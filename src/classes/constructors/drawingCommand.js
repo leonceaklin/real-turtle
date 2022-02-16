@@ -18,8 +18,6 @@ export default class Command {
 
   defineObjects(main) {
     this.main = main;
-    this.ctx = main.ctx;
-    this.canvas = main.canvas;
     this.logger = main.logger;
     this.state = main.state;
   }
