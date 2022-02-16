@@ -1,8 +1,12 @@
+![](https://raw.githubusercontent.com/leonceaklin/real-turtle/master/src/img/logo.gif)
+
 # Real Turtle
 
 A simple yet powerful turtle graphics library for JavaScript. It aims to make turtle graphics in JavaScript as simple as possible while giving insights to HTML canvas by staying close to its spec
 
-<a href="https://repl.it/@leonceaklin/RealTurtleSimpleTemplate" target="_blank">Try it out🚀</a>
+[Try it out🚀](https://repl.it/@leonceaklin/RealTurtleSimpleTemplate)
+
+[Try it out (async mode)🚀](https://repl.it/@leonceaklin/RealTurtleAsyncTemplate)
 
 ## Getting started
 
@@ -69,12 +73,13 @@ turtle.forward(100)
 
 When creating a `new RealTurtle()` instance, you can pass an options object as the second parameter which may contain the following properties:
 
-| Property    | Type    | Description                                                                                                                                | Default    |
-| ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
-| `verbose`   | Boolean | Defines if the instance should log every step to the console.                                                                              | `false`    |
-| `autoStart` | Boolean | Defines if the turtle should start drawing automatically. If enabled, the `.start()` command at the end of your commands becomes obsolete. | `false`    |
-| `image`     | String  | Sets the URL of the sprite image of the turtle.                                                                                            | [String]   |
-| `state`     | Object  | Sets the initial state of the turtle. More shown below.                                                                                    | [Object]## |
+| Property    | Type    | Description                                                                                                                                | Default  |
+| ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| `verbose`   | Boolean | Defines if the instance should log every step to the console.                                                                              | `false`  |
+| `autoStart` | Boolean | Defines if the turtle should start drawing automatically. If enabled, the `.start()` command at the end of your commands becomes obsolete. | `false`  |
+| `image`     | String  | Sets the URL of the sprite image of the turtle.                                                                                            | [String] |
+| `state`     | Object  | Sets the initial state of the turtle. More shown below.                                                                                    | [Object] |
+| `async`     | Boolean | Defines if you want to use the turtle in async mode                                                                                        | `false`  |
 
 ### Initial turtle state
 
@@ -87,9 +92,28 @@ In you options object, you can declare the initial State of your turtle via the 
 
 This list is not completed yet
 
+### Normal mode vs. async mode
+
+Normally real-turtle gathers your commands and lists them in a task list before executing them. The commands you give the turtle are therefore not executed until everything is stored in the task list. This makes animations possible. However, this is not how JavaScript works and it means that forever loops such as `while(true)` are not possible that way.
+
+With async mode, which can be enabled by using the async option when creating the instance or the async helper, you can solve this. You write your code into an async function and wait for the tasks to be executed using `await` .
+
+#### Async example
+
+```javascript
+async function run(){
+     //Your turtle commands go here
+     await turtle.move(200)
+     console.log("Done")
+}
+run()
+```
+
+
+
 ## Commands
 
-### `.start()` the most important command
+### `.start()` the most important command at the end of your script if you don't use async mode
 
 The `.start()`command tells the turtle to actually start the drawing process.
 
@@ -119,27 +143,27 @@ Unless you are using `autoStart` or a helper, your turtle will only move if you 
 
 ### Setting visual parameters
 
-| Command                      | Description                                             | Arguments                                                                                                              | Aliases |
-| ---------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------- |
-| `.setStrokeStyle(style)`     | Sets the style of the stroke which the turtle will draw | - `style`: String/Gradient/Pattern: The style of the stroke. HTML canvas 2D context gradients and patterns can be used |         |
-| `.setStrokeColorRGB(r, g, b)`     | Sets the style of the stroke to a color according to RGB values | - `r`: Number: Red value (0 - 255)<br/>- `g`: Number: Green value (0 - 255)<br/>- `b`: Number: Blue value (0 - 255) |         |
-| `.setStrokeColorHSL(r, g, b)`     | Sets the style of the stroke to a color according to HSL values | - `h`: Number: Hue in degrees<br/>- `s`: Number: Saturation value (0 - 1)<br/>- `l`: Number: Light value (0 - 1) |         |
-| `.setFillStyle(style)`       | Sets the style of areas which the turtle will fill      | - `style`: String/Gradient/Pattern: The style of the stroke. HTML canvas 2D context gradients and patterns can be used |         |
-| `.setLineWidth(width)`       | Sets the width of the stroke which the turtle will draw | - `width`: Number: The width of the line in px                                                                         |         |
-| `.setLineCap(style)`         | Sets the appearance of the ends of the lines            | - `style`: String: Style of the ends. Possible options: `butt`, `round`, `square`                                      |         |
-| `.setFont(font)`             | Sets the font which the turtle uses for text            | - `font`: String: Font size and font family in HTML canvas format (`10px sans-serif` for example)                      |         |
-| `.setTextAlign(align)`       | Sets the align of text written by the turtle            | - `align`: String: The align of the text. Possible options: `left`, `right`,`center`                                   |         |
-| `.setTextBaseline(baseline)` | Sets the baseline of text written by the turtle         | - `baseline`: String: The baseline of the text. Possible options: `bottom`, `middle`,`top`,`hanging`,`alphabetic`      |         |
+| Command                       | Description                                                     | Arguments                                                                                                              | Aliases |
+| ----------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------- |
+| `.setStrokeStyle(style)`      | Sets the style of the stroke which the turtle will draw         | - `style`: String/Gradient/Pattern: The style of the stroke. HTML canvas 2D context gradients and patterns can be used |         |
+| `.setStrokeColorRGB(r, g, b)` | Sets the style of the stroke to a color according to RGB values | - `r`: Number: Red value (0 - 255)<br/>- `g`: Number: Green value (0 - 255)<br/>- `b`: Number: Blue value (0 - 255)    |         |
+| `.setStrokeColorHSL(r, g, b)` | Sets the style of the stroke to a color according to HSL values | - `h`: Number: Hue in degrees<br/>- `s`: Number: Saturation value (0 - 1)<br/>- `l`: Number: Light value (0 - 1)       |         |
+| `.setFillStyle(style)`        | Sets the style of areas which the turtle will fill              | - `style`: String/Gradient/Pattern: The style of the stroke. HTML canvas 2D context gradients and patterns can be used |         |
+| `.setLineWidth(width)`        | Sets the width of the stroke which the turtle will draw         | - `width`: Number: The width of the line in px                                                                         |         |
+| `.setLineCap(style)`          | Sets the appearance of the ends of the lines                    | - `style`: String: Style of the ends. Possible options: `butt`, `round`, `square`                                      |         |
+| `.setFont(font)`              | Sets the font which the turtle uses for text                    | - `font`: String: Font size and font family in HTML canvas format (`10px sans-serif` for example)                      |         |
+| `.setTextAlign(align)`        | Sets the align of text written by the turtle                    | - `align`: String: The align of the text. Possible options: `left`, `right`,`center`                                   |         |
+| `.setTextBaseline(baseline)`  | Sets the baseline of text written by the turtle                 | - `baseline`: String: The baseline of the text. Possible options: `bottom`, `middle`,`top`,`hanging`,`alphabetic`      |         |
 
 ### Changing appearance and behavior of the turtle
 
-| Command            | Description                             | Arguments                                                  | Aliases |
-| ------------------ | --------------------------------------- | ---------------------------------------------------------- | ------- |
-| `.setPosition(x, y)` | Sets the position of your turtle on the canvas      | - `x`: X-coordinate of the position<br/> -`y`: Y-coordinate of the position |       
-| `.setSpeed(speed)` | Defines how fast your turtle moves      | - `speed`: Number: From 0 (super slow) to 1 (blazing fast) |         |
-| `.setSize(size)`   | Sets the size of the turtle             | - `size`: Number: The size of the turtle in px             |         |
-| `.setImage(url)`   | Sets the skin of the turtle to an image | - `url`: String: The URL of the image                      |         |
-| `.setIcon(url)`    | Sets the skin of the turtle to an icon  | - `icon`: String: The emoji icon                           |         |
+| Command              | Description                                    | Arguments                                                                   | Aliases |
+| -------------------- | ---------------------------------------------- | --------------------------------------------------------------------------- | ------- |
+| `.setPosition(x, y)` | Sets the position of your turtle on the canvas | - `x`: X-coordinate of the position<br/> -`y`: Y-coordinate of the position |         |
+| `.setSpeed(speed)`   | Defines how fast your turtle moves             | - `speed`: Number: From 0 (super slow) to 1 (blazing fast)                  |         |
+| `.setSize(size)`     | Sets the size of the turtle                    | - `size`: Number: The size of the turtle in px                              |         |
+| `.setImage(url)`     | Sets the skin of the turtle to an image        | - `url`: String: The URL of the image                                       |         |
+| `.setIcon(url)`      | Sets the skin of the turtle to an icon         | - `icon`: String: The emoji icon                                            |         |
 
 ### Programmatic functions
 
@@ -152,4 +176,4 @@ Unless you are using `autoStart` or a helper, your turtle will only move if you 
 
 To manipulate the canvas and the context of the RealTurtle() instance directly, you can use `.canvas` and `.ctx`.
 
-> Note: To avoid an overwrite of your changes to the context, it is recommended to use these properties only inside an `.eval(func)` command.
+> Note: To avoid an overwrite of your changes to the context, it is recommended to use async mode or to use these properties only inside an `.eval(func)` command.

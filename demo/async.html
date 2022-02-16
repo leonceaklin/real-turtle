@@ -13,6 +13,8 @@
   var turtle = new RealTurtle.default('#real-turtle', {verbose: true, async: true})
 
   async function start(){
+    await turtle.beginPath()
+    await turtle.setSpeed(1);
     await turtle.setPosition(500, 500);
     await turtle.forward(100);
     await turtle.left(90);
@@ -21,9 +23,11 @@
     await turtle.right(90);
     await turtle.forward(100);
     await turtle.arc(200, 100, 100)
+    await turtle.fill();
   }
 
-  start();
+  start()
+
   </script>
 </body>
 </html>

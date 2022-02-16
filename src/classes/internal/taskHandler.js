@@ -11,6 +11,9 @@ export default class TaskHandler extends InternalClass {
     this.cacheCanvas = null;
 
     this.isExecuting = false;
+
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   addTask(name, options) {
@@ -48,6 +51,7 @@ export default class TaskHandler extends InternalClass {
 
       if (!this.main.options.async) {
         this.cacheCanvas = null;
+
         this.previousCanvas = null;
 
         this.ctx.fillStyle = "#ffffff";
@@ -90,7 +94,6 @@ export default class TaskHandler extends InternalClass {
         this.cacheCanvas.height = this.canvas.height;
         this.cacheCtx = this.cacheCanvas.getContext("2d");
         this.cacheCtx.drawImage(this.canvas, 0, 0);
-        document.body.append(this.cacheCanvas);
       }
 
       if (!this.previousCanvas) {
@@ -127,7 +130,11 @@ export default class TaskHandler extends InternalClass {
       if (this.activeTaskProgress >= 1) {
         this.activeTaskProgress = 1;
       }
+    } else {
+      this.activeTaskProgress = 1;
     }
+
+    console.log(this.main.state.speed);
 
     // Draw previous canvas onto main canvas
     if (this.prevoiusCanvas !== null) {
@@ -147,21 +154,23 @@ export default class TaskHandler extends InternalClass {
     }
 
     // Execute command
-
-    // Await with speed lower than 1 (process)
     if (this.main.state.speed < 1) {
       await this.activeTask.execute(this.activeTaskProgress, this.ctx);
-    }
-
-    // No waiting with speed 1
-    else {
-      this.activeTask.execute(1, this.ctx);
     }
 
     this.activeTaskFirstPaint = false;
 
     // If task is finished now
     if (this.activeTaskProgress == 1) {
+      //Draw current canvas onto previous canvas
+      if (this.previousCtx && this.cacheCanvas) {
+        this.previousCtx.drawImage(this.cacheCanvas, 0, 0);
+      }
+
+      if (this.cacheCanvas) {
+        this.ctx.drawImage(this.cacheCanvas, 0, 0);
+      }
+
       if (this.activeTaskKey + 1 == this.tasks.length) {
         this.executionFinished = true;
 
@@ -180,13 +189,14 @@ export default class TaskHandler extends InternalClass {
         this.activeTaskFirstPaint = true;
         this.activeTaskKey++;
         this.activeTask = this.tasks[this.activeTaskKey];
-        this.activeTaskEstimationCallback = this.activeTask.estimate(this.main);
-        this.activeTask.prepare(this.main);
 
-        //Draw current canvas onto previous canvas
-        if (this.previousCtx && this.cacheCanvas) {
-          this.previousCtx.drawImage(this.cacheCanvas, 0, 0);
+        if (this.main.state.speed < 1) {
+          this.activeTaskEstimationCallback = this.activeTask.estimate(
+            this.main
+          );
         }
+
+        this.activeTask.prepare(this.main);
 
         /* old version
         this.activeTaskEstimationCallback = this.taskEstimationCallbacks[

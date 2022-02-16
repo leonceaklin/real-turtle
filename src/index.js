@@ -85,9 +85,6 @@ class RealTurtle {
 
         if(this.options.async) {
           this.taskHandler.tasks = [];
-          if(this.state.speed == 1){
-            this.state.speed = 0.9;
-          }
         }
 
         this.taskHandler.addTask("${name}", options);

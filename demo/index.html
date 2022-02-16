@@ -112,17 +112,9 @@ hookCanvasGetContext()
   }
 
   turtle.setLineCap("round").setLineWidth(10).setLineJoin("round")
-  .beginPath()
-  .forward(90)
-  .left(90)
-  .forward(90)
-  .left(90)
-  .forward(90)
-  .left(90)
-  .closePath()
-  .stroke()
-  .fill()
-  .turn()
+  .setSpeed(1)
+
+  form(20)
 
   </script>
 </body>

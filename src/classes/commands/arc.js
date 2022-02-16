@@ -64,7 +64,7 @@ export default class ArcCommand extends Command {
         this.arcCenterY +
         Math.sin(currentAngle * (Math.PI / 180)) * this.options.radius;
 
-      if (!this.state.pathActive) {
+      if (!this.state.pathActive || ctx == this.main.ctx) {
         ctx.beginPath();
       }
 
