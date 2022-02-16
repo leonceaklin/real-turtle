@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/leonceaklin/real-turtle/master/src/img/logo.gif)
+![](https://raw.githubusercontent.com/leonceaklin/real-turtle/master/img/logo.gif)
 
 # Real Turtle
 
