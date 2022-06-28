@@ -12,6 +12,7 @@ export default [
   "fillText",
   "strokeText",
   "fillCanvas",
+  "clear",
 
   "penUp",
   "penDown",
