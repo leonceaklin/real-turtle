@@ -136,6 +136,9 @@ export default class TaskHandler extends InternalClass {
 
     // Draw previous canvas onto main canvas
     if (this.previousCanvas !== null) {
+      // need to clear the canvas because transparent pixels in the previousCanvas (where nothing was drawn yet)
+      //  wouldn't override filled pixels (e.g. the drawn turtle) in the canvas
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.ctx.drawImage(this.previousCanvas, 0, 0);
     } else {
       this.ctx.fillStyle = "#ffffff";
