@@ -135,7 +135,7 @@ export default class TaskHandler extends InternalClass {
     }
 
     // Draw previous canvas onto main canvas
-    if (this.prevoiusCanvas !== null) {
+    if (this.previousCanvas !== null) {
       this.ctx.drawImage(this.previousCanvas, 0, 0);
     } else {
       this.ctx.fillStyle = "#ffffff";
