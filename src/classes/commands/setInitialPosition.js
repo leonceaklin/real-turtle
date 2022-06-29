@@ -1,6 +1,6 @@
 import Command from "../constructors/drawingCommand";
 
-export default class SetPositionCommand extends Command {
+export default class SetInitialPositionCommand extends Command {
   static params = { x: new Number(), y: new Number() };
   constructor(options) {
     super(options);
@@ -16,10 +16,7 @@ export default class SetPositionCommand extends Command {
 
   async execute(progress, ctx) {
     return new Promise((resolve) => {
-      var xNow = this.options.x + this.initialState.position.x * (1 - progress);
-      var yNow = this.options.y + this.initialState.position.y * (1 - progress);
-
-      this.state.setPosition(xNow, yNow);
+      this.state.setInitialPosition(this.options.x, this.options.y);
       resolve();
     });
   }

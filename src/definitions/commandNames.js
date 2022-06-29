@@ -12,6 +12,7 @@ export default [
   "fillText",
   "strokeText",
   "fillCanvas",
+  "clear",
 
   "penUp",
   "penDown",
@@ -31,6 +32,9 @@ export default [
   "setTextBaseline",
 
   "setPosition",
+  "resetPosition",
+  "setInitialPosition",
+  "setInitialRotation",
 
   "beginPath",
   "closePath",
