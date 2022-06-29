@@ -4,14 +4,22 @@ export default class TurtleState extends InternalClass {
   constructor(main) {
     super(main);
 
-    this.position = {
-      x: this.main.canvas.width / 2,
-      y: this.main.canvas.height / 2,
-    };
-
     var initialState = main.options.state;
 
-    this.rotation = 0;
+    this.position = {
+      x: initialState.position
+        ? initialState.position.x
+        : this.main.canvas.width / 2,
+      y: initialState.position
+        ? initialState.position.y
+        : this.main.canvas.height / 2,
+    };
+
+    this.rotation = initialState.rotation ? initialState.rotation : 0;
+
+    this.initialPosition = this.position;
+    this.initialRotation = this.rotation;
+
     this.size = initialState.size;
 
     this.lineWidth = initialState.lineWidth;
@@ -38,6 +46,19 @@ export default class TurtleState extends InternalClass {
 
   setRotation(deg) {
     this.rotation = deg;
+  }
+
+  setInitialPosition(x, y) {
+    this.initialPosition = { x, y };
+  }
+
+  setInitialRotation(deg) {
+    this.initialRotation = deg;
+  }
+
+  resetPosition() {
+    this.position = this.initialPosition;
+    this.rotation = this.initialRotation;
   }
 
   setSize(size) {

@@ -32,6 +32,9 @@ export default [
   "setTextBaseline",
 
   "setPosition",
+  "resetPosition",
+  "setInitialPosition",
+  "setInitialRotation",
 
   "beginPath",
   "closePath",
