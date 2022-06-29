@@ -11,9 +11,6 @@ export default class TaskHandler extends InternalClass {
     this.cacheCanvas = null;
 
     this.isExecuting = false;
-
-    this.ctx.fillStyle = "#ffffff";
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   addTask(name, options) {
@@ -53,9 +50,6 @@ export default class TaskHandler extends InternalClass {
         this.cacheCanvas = null;
 
         this.previousCanvas = null;
-
-        this.ctx.fillStyle = "#ffffff";
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
       }
 
       if (this.tasks.length == 0) {
@@ -137,9 +131,6 @@ export default class TaskHandler extends InternalClass {
     // Draw previous canvas onto main canvas
     if (this.prevoiusCanvas !== null) {
       this.ctx.drawImage(this.previousCanvas, 0, 0);
-    } else {
-      this.ctx.fillStyle = "#ffffff";
-      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
     //Draw the completed Task onto the cache canvas
