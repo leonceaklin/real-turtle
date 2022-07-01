@@ -148,6 +148,10 @@ export default class TaskHandler extends InternalClass {
 
     // If task is finished now
     if (this.activeTaskProgress == 1) {
+
+      //Apply the completed Task onto the main ctx (needed for "invisible" tasks such as .setLineWidth())
+      await this.activeTask.execute(1, this.ctx);
+
       //Draw current canvas onto previous canvas
       if (this.previousCtx && this.previousCanvas && this.cacheCanvas) {
         // need to clear the previousCanvas because transparent pixels in the cacheCanvas wouldn't override filled pixels in the previousCanvas
