@@ -60,9 +60,15 @@ class RealTurtle {
 
   start() {
     // When imge loaded
-    this.state.setImage(this.options.image).then(() => {
-      this.taskHandler.executeTasks();
-    });
+    this.state
+      .setImage(this.options.image)
+      .then(() => {
+        return this.taskHandler.executeTasks();
+      })
+      .then(() => {
+        //clear the tasks from the list that have already been executed
+        this.taskHandler.tasks = [];
+      });
   }
 
   registerCommand(name, command) {
