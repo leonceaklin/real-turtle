@@ -103,16 +103,16 @@ hookCanvasGetContext()
   <script type="text/javascript">
 
 
-  function form(e, size=50/e, n=100){
+  function form(e, size=50/e, n=500){
     for(var i = 0; i < n; i++){
-      turtle.forward(size * i/2)
+      turtle.forward(size * i/8)
       turtle.left(360/e)
       turtle.setStrokeColorHSL(6*i, 1, 0.5);
     }
   }
 
   turtle.setLineCap("round").setLineWidth(10).setLineJoin("round")
-  .setSpeed(1)
+  .setSpeed(0.8)
 
   form(20)
 
