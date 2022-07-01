@@ -1,6 +1,6 @@
 /*!
  * 
- *   real-turtle v1.1.4
+ *   real-turtle v1.1.5
  *   https://github.com/leonceaklin/real-turtle
  *
  *   Copyright (c) Léonce Aklin
