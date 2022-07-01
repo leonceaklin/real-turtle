@@ -46,12 +46,6 @@ export default class TaskHandler extends InternalClass {
 
       this.isExecuting = true;
 
-      if (!this.main.options.async) {
-        this.cacheCanvas = null;
-
-        this.previousCanvas = null;
-      }
-
       if (this.tasks.length == 0) {
         reject();
         return;
