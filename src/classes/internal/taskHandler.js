@@ -157,7 +157,12 @@ export default class TaskHandler extends InternalClass {
       //Draw current canvas onto previous canvas
       if (this.previousCtx && this.previousCanvas && this.cacheCanvas) {
         // need to clear the previousCanvas because transparent pixels in the cacheCanvas wouldn't override filled pixels in the previousCanvas
-        this.previousCtx.clearRect(0, 0, this.previousCanvas.width, this.previousCanvas.height);
+        this.previousCtx.clearRect(
+          0,
+          0,
+          this.previousCanvas.width,
+          this.previousCanvas.height
+        );
         this.previousCtx.drawImage(this.cacheCanvas, 0, 0);
       }
 
