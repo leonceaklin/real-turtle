@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const PrettierPlugin = require("prettier-webpack-plugin");
+// const PrettierPlugin = require("prettier-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
 const getPackageJson = require('./scripts/getPackageJson');
 
@@ -29,7 +29,7 @@ var outputs = [
     mode: "production",
     devtool: 'source-map',
     entry: './src/index.js',
-    target: "es2020",
+    target: "web",
     output: {
       filename: 'index.js',
       path: path.resolve(__dirname, 'build'),
@@ -62,7 +62,7 @@ var outputs = [
       ]
     },
     plugins: [
-      new PrettierPlugin(),
+      // new PrettierPlugin(),
       new webpack.BannerPlugin(banner)
     ]
   }

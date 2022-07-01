@@ -1,9 +1,9 @@
-import Command from "../constructors/drawingCommand";
+import Command from '../constructors/drawingCommand';
 
-import TurnCommand from "./turn";
+import TurnCommand from './turn';
 
 export default class LeftCommand extends Command {
-  static aliases = ["rt"];
+  static aliases = ['rt'];
 
   static params = { degrees: new Number() };
 

@@ -1,5 +1,5 @@
 import RealTurtle from '../src/index';
 
-// test('Runs without crashing', () => {
-//   new RealTurtle();
-// });
+test('Turtle instance can be created', () => {
+    new RealTurtle();
+});

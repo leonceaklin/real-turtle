@@ -1,4 +1,4 @@
-import Command from "../constructors/drawingCommand";
+import Command from '../constructors/drawingCommand';
 
 export default class ExampleCommand extends Command {
   static params = { parameter: new String() };

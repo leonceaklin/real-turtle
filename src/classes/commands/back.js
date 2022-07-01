@@ -1,9 +1,9 @@
-import Command from "../constructors/drawingCommand";
+import Command from '../constructors/drawingCommand';
 
-import MoveCommand from "./move";
+import MoveCommand from './move';
 
 export default class BackCommand extends Command {
-  static aliases = ["bk"];
+  static aliases = ['bk'];
 
   static params = { steps: new Number() };
 

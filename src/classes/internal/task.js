@@ -1,8 +1,8 @@
-import commandNames from "../../definitions/commandNames";
+import commandNames from '../../definitions/commandNames';
 
 const commands = [];
 for (var i = 0; i < commandNames.length; i++) {
-  commands[commandNames[i]] = require("../commands/" + commandNames[i]).default;
+  commands[commandNames[i]] = require('../commands/' + commandNames[i]).default;
 }
 
 export default class Task {

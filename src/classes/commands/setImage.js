@@ -1,4 +1,4 @@
-import Command from "../constructors/drawingCommand";
+import Command from '../constructors/drawingCommand';
 
 export default class SetImageCommand extends Command {
   static params = {

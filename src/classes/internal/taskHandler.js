@@ -1,6 +1,6 @@
-import InternalClass from "../constructors/internalClass";
+import InternalClass from '../constructors/internalClass';
 
-import Task from "./task.js";
+import Task from './task.js';
 
 export default class TaskHandler extends InternalClass {
   constructor(main) {
@@ -83,20 +83,20 @@ export default class TaskHandler extends InternalClass {
         //It enables the library to ensure that canvas steps are executed "natively" regardless of any animations
         //.fill() is made possible by this for example
 
-        this.cacheCanvas = document.createElement("canvas");
+        this.cacheCanvas = document.createElement('canvas');
         this.cacheCanvas.width = this.canvas.width;
         this.cacheCanvas.height = this.canvas.height;
-        this.cacheCtx = this.cacheCanvas.getContext("2d");
+        this.cacheCtx = this.cacheCanvas.getContext('2d');
         this.cacheCtx.drawImage(this.canvas, 0, 0);
       }
 
       if (!this.previousCanvas) {
         //Create the cache canvas which gets updated everytime a new step is finished
 
-        this.previousCanvas = document.createElement("canvas");
+        this.previousCanvas = document.createElement('canvas');
         this.previousCanvas.width = this.canvas.width;
         this.previousCanvas.height = this.canvas.height;
-        this.previousCtx = this.previousCanvas.getContext("2d");
+        this.previousCtx = this.previousCanvas.getContext('2d');
         this.previousCtx.drawImage(this.canvas, 0, 0);
       }
 
@@ -157,7 +157,12 @@ export default class TaskHandler extends InternalClass {
       //Draw current canvas onto previous canvas
       if (this.previousCtx && this.previousCanvas && this.cacheCanvas) {
         // need to clear the previousCanvas because transparent pixels in the cacheCanvas wouldn't override filled pixels in the previousCanvas
-        this.previousCtx.clearRect(0, 0, this.previousCanvas.width, this.previousCanvas.height);
+        this.previousCtx.clearRect(
+          0,
+          0,
+          this.previousCanvas.width,
+          this.previousCanvas.height
+        );
         this.previousCtx.drawImage(this.cacheCanvas, 0, 0);
       }
 

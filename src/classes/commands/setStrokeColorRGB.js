@@ -1,6 +1,6 @@
-import Command from "../constructors/drawingCommand";
+import Command from '../constructors/drawingCommand';
 
-import SetStrokeStyleCommand from "./setStrokeStyle";
+import SetStrokeStyleCommand from './setStrokeStyle';
 
 export default class SetStrokeColorRGBCommand extends Command {
   static params = { r: new Number(), g: new Number(), b: new Number() };
