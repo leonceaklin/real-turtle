@@ -1,6 +1,6 @@
 {
   "name": "real-turtle",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "A turtle library for JS beginners",
   "main": "build/index.js",
   "scripts": {
