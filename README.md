@@ -1,6 +1,7 @@
 ![](https://raw.githubusercontent.com/leonceaklin/real-turtle/master/img/logo.gif)
 
 # Real Turtle
+[![Build](https://github.com/leonceaklin/real-turtle/actions/workflows/main.yml/badge.svg)](https://github.com/leonceaklin/real-turtle/actions/workflows/main.yml)
 
 A simple yet powerful turtle graphics library for JavaScript. It aims to make turtle graphics in JavaScript as simple as possible while giving insights to HTML canvas by staying close to its spec
 
