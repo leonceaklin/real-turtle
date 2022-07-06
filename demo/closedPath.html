@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>RealTurte</title>
+  </head>
+  <body>
+    <script src="../build/index.js"></script>
+    <canvas id="real-turtle"></canvas>
+  <script type="text/javascript" src="https://unpkg.com/real-turtle/build/helpers/simple.js"></script>
+
+  <script type="text/javascript">
+    //Your turtle code goes here
+    turtle
+    .setSpeed(0.5)
+    .setLineWidth(8)
+    .setLineCap("round")
+    .setLineJoin("round")
+    turtle.beginPath().forward(100).right(90).forward(100).left(90).forward(100).right(90).forward(100).right(90).forward(200).closePath().stroke().fill()
+  </script>
+
+  </body>
+</html>

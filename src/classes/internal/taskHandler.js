@@ -22,6 +22,10 @@ export default class TaskHandler extends InternalClass {
       return;
     }
 
+    if (this.main.state.image.object == null) {
+      return;
+    }
+
     var angleInRadians = this.main.state.rotation * (Math.PI / 180);
 
     var x = this.main.state.position.x;

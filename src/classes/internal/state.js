@@ -110,17 +110,26 @@ export default class TurtleState extends InternalClass {
   }
 
   async setImage(url) {
-    return new Promise((resolve) => {
-      var image = new Image();
-
-      image.onload = () => {
-        this.image.object = image;
-        this.imageSet = true;
+    return new Promise((resolve, reject) => {
+      if(url == null || url == false || url == undefined){
         resolve();
-      };
+      }
 
-      image.src = url;
-      this.image.url = url;
+      else{
+        var image = new Image();
+        image.onload = () => {
+          this.image.object = image;
+          this.imageSet = true;
+          resolve();
+        };
+
+        image.onerror = (error) => {
+          reject(error);
+        };
+
+        image.src = url;
+        this.image.url = url;
+      }
     });
   }
 

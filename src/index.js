@@ -14,9 +14,15 @@ for (var i = 0; i < commandNames.length; i++) {
 }
 
 class RealTurtle {
-  constructor(canvas, options) {
+  constructor(canvas, options = {}) {
     if (Object.prototype.toString.call(canvas) === '[object String]') {
       canvas = document.querySelector(canvas);
+    }
+
+    //Generate canvas if it is not provided
+    if (canvas == undefined){
+      canvas = document.createElement('canvas');
+      document.body.appendChild(canvas);
     }
 
     //Generate canvas if given element is not one
@@ -28,7 +34,7 @@ class RealTurtle {
 
     this.options = standardOptions;
     for (const [key, value] of Object.entries(options)) {
-      if (typeof value !== 'object') {
+      if (typeof value !== 'object' || value == null) {
         this.options[key] = value;
       } else {
         for (const [innerKey, innerValue] of Object.entries(value)) {
@@ -58,17 +64,16 @@ class RealTurtle {
     }
   }
 
-  start() {
-    // When imge loaded
-    this.state
-      .setImage(this.options.image)
-      .then(() => {
-        return this.taskHandler.executeTasks();
-      })
-      .then(() => {
-        //clear the tasks from the list that have already been executed
-        this.taskHandler.tasks = [];
-      });
+  async start() {
+      // Set image if it was never set before
+      if(!this.state.imageSet){
+        await this.state.setImage(this.options.image)
+      }
+
+      await this.taskHandler.executeTasks();
+      //clear the tasks from the list that have already been executed
+      this.taskHandler.tasks = [];
+      return this;
   }
 
   registerCommand(name, command) {
