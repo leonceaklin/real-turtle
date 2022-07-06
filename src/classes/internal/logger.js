@@ -1,4 +1,4 @@
-import InternalClass from '../constructors/internalClass';
+import InternalClass from "../constructors/internalClass";
 
 export default class Logger extends InternalClass {
   constructor(main) {

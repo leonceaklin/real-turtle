@@ -1,4 +1,4 @@
-import Command from '../constructors/drawingCommand';
+import Command from "../constructors/drawingCommand";
 
 export default class TurnCommand extends Command {
   static params = { degrees: new Number() };

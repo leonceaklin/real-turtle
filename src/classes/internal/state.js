@@ -1,4 +1,4 @@
-import InternalClass from '../constructors/internalClass';
+import InternalClass from "../constructors/internalClass";
 
 export default class TurtleState extends InternalClass {
   constructor(main) {
@@ -111,11 +111,9 @@ export default class TurtleState extends InternalClass {
 
   async setImage(url) {
     return new Promise((resolve, reject) => {
-      if(url == null || url == false || url == undefined){
+      if (url == null || url == false || url == undefined) {
         resolve();
-      }
-
-      else{
+      } else {
         var image = new Image();
         image.onload = () => {
           this.image.object = image;

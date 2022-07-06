@@ -1,6 +1,6 @@
-import InternalClass from '../constructors/internalClass';
+import InternalClass from "../constructors/internalClass";
 
-import Task from './task.js';
+import Task from "./task.js";
 
 export default class TaskHandler extends InternalClass {
   constructor(main) {
@@ -81,20 +81,20 @@ export default class TaskHandler extends InternalClass {
         //It enables the library to ensure that canvas steps are executed "natively" regardless of any animations
         //.fill() is made possible by this for example
 
-        this.cacheCanvas = document.createElement('canvas');
+        this.cacheCanvas = document.createElement("canvas");
         this.cacheCanvas.width = this.canvas.width;
         this.cacheCanvas.height = this.canvas.height;
-        this.cacheCtx = this.cacheCanvas.getContext('2d');
+        this.cacheCtx = this.cacheCanvas.getContext("2d");
         this.cacheCtx.drawImage(this.canvas, 0, 0);
       }
 
       if (!this.previousCanvas) {
         //Create the cache canvas which gets updated everytime a new step is finished
 
-        this.previousCanvas = document.createElement('canvas');
+        this.previousCanvas = document.createElement("canvas");
         this.previousCanvas.width = this.canvas.width;
         this.previousCanvas.height = this.canvas.height;
-        this.previousCtx = this.previousCanvas.getContext('2d');
+        this.previousCtx = this.previousCanvas.getContext("2d");
         this.previousCtx.drawImage(this.canvas, 0, 0);
       }
 
@@ -152,7 +152,6 @@ export default class TaskHandler extends InternalClass {
 
     // If task is finished now
     if (this.activeTaskProgress == 1) {
-
       //Apply the completed Task onto the main ctx (needed for "invisible" tasks such as .setLineWidth())
       await this.activeTask.execute(1, this.ctx);
 

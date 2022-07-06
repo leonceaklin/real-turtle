@@ -1,9 +1,9 @@
-import Command from '../constructors/drawingCommand';
+import Command from "../constructors/drawingCommand";
 
 export default class PenDownCommand extends Command {
   static params = {};
 
-  static aliases = ['down'];
+  static aliases = ["down"];
 
   constructor(options) {
     super(options);

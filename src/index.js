@@ -1,40 +1,40 @@
-import 'regenerator-runtime/runtime';
+import "regenerator-runtime/runtime";
 
-import Logger from './classes/internal/logger';
-import TaskHandler from './classes/internal/taskHandler';
-import TurtleState from './classes/internal/state';
+import Logger from "./classes/internal/logger";
+import TaskHandler from "./classes/internal/taskHandler";
+import TurtleState from "./classes/internal/state";
 
-import standardOptions from './definitions/standardOptions';
+import standardOptions from "./definitions/standardOptions";
 
-import commandNames from './definitions/commandNames';
+import commandNames from "./definitions/commandNames";
 const commands = [];
 for (var i = 0; i < commandNames.length; i++) {
-  commands[commandNames[i]] = require('./classes/commands/' +
+  commands[commandNames[i]] = require("./classes/commands/" +
     commandNames[i]).default;
 }
 
 class RealTurtle {
   constructor(canvas, options = {}) {
-    if (Object.prototype.toString.call(canvas) === '[object String]') {
+    if (Object.prototype.toString.call(canvas) === "[object String]") {
       canvas = document.querySelector(canvas);
     }
 
     //Generate canvas if it is not provided
-    if (canvas == undefined){
-      canvas = document.createElement('canvas');
+    if (canvas == undefined) {
+      canvas = document.createElement("canvas");
       document.body.appendChild(canvas);
     }
 
     //Generate canvas if given element is not one
-    if (canvas.tagName != 'CANVAS') {
-      var canvasElement = document.createElement('canvas');
+    if (canvas.tagName != "CANVAS") {
+      var canvasElement = document.createElement("canvas");
       canvas.appendChild(canvasElement);
       canvas = canvasElement;
     }
 
     this.options = standardOptions;
     for (const [key, value] of Object.entries(options)) {
-      if (typeof value !== 'object' || value == null) {
+      if (typeof value !== "object" || value == null) {
         this.options[key] = value;
       } else {
         for (const [innerKey, innerValue] of Object.entries(value)) {
@@ -44,7 +44,7 @@ class RealTurtle {
     }
 
     this.canvas = canvas;
-    this.ctx = canvas.getContext('2d');
+    this.ctx = canvas.getContext("2d");
 
     this.commands = [];
 
@@ -65,15 +65,15 @@ class RealTurtle {
   }
 
   async start() {
-      // Set image if it was never set before
-      if(!this.state.imageSet){
-        await this.state.setImage(this.options.image)
-      }
+    // Set image if it was never set before
+    if (!this.state.imageSet) {
+      await this.state.setImage(this.options.image);
+    }
 
-      await this.taskHandler.executeTasks();
-      //clear the tasks from the list that have already been executed
-      this.taskHandler.tasks = [];
-      return this;
+    await this.taskHandler.executeTasks();
+    //clear the tasks from the list that have already been executed
+    this.taskHandler.tasks = [];
+    return this;
   }
 
   registerCommand(name, command) {

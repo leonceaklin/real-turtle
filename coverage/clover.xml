@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1657144578250" clover="3.2.0">
-  <project timestamp="1657144578250" name="All files">
+<coverage generated="1657144649367" clover="3.2.0">
+  <project timestamp="1657144649367" name="All files">
     <metrics statements="588" coveredstatements="538" conditionals="111" coveredconditionals="91" methods="239" coveredmethods="226" elements="938" coveredelements="855" complexity="0" loc="588" ncloc="588" packages="5" files="47" classes="47"/>
     <package name="src">
       <metrics statements="43" coveredstatements="37" conditionals="17" coveredconditionals="12" methods="4" coveredmethods="3"/>
@@ -475,18 +475,18 @@
         <line num="4" count="1" type="stmt"/>
         <line num="7" count="4" type="stmt"/>
         <line num="11" count="6" type="stmt"/>
-        <line num="19" count="15" type="stmt"/>
-        <line num="20" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="14" type="stmt"/>
+        <line num="20" count="14" type="cond" truecount="2" falsecount="0"/>
         <line num="21" count="10" type="stmt"/>
         <line num="22" count="10" type="stmt"/>
         <line num="23" count="10" type="stmt"/>
-        <line num="25" count="5" type="stmt"/>
-        <line num="27" count="5" type="stmt"/>
-        <line num="28" count="5" type="stmt"/>
-        <line num="29" count="5" type="stmt"/>
-        <line num="30" count="5" type="stmt"/>
-        <line num="31" count="5" type="stmt"/>
-        <line num="32" count="5" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
       </file>
       <file name="strokeText.js" path="/Users/anicaklin/zebrapig/libs/real-turtle/src/classes/commands/strokeText.js">
         <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
@@ -623,9 +623,9 @@
         <line num="21" count="94" type="stmt"/>
         <line num="22" count="94" type="stmt"/>
         <line num="23" count="94" type="stmt"/>
-        <line num="27" count="266" type="stmt"/>
-        <line num="28" count="266" type="stmt"/>
-        <line num="29" count="266" type="stmt"/>
+        <line num="27" count="265" type="stmt"/>
+        <line num="28" count="265" type="stmt"/>
+        <line num="29" count="265" type="stmt"/>
         <line num="34" count="94" type="stmt"/>
       </file>
       <file name="taskHandler.js" path="/Users/anicaklin/zebrapig/libs/real-turtle/src/classes/internal/taskHandler.js">
@@ -637,10 +637,10 @@
         <line num="11" count="48" type="stmt"/>
         <line num="13" count="48" type="stmt"/>
         <line num="17" count="94" type="stmt"/>
-        <line num="21" count="198" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="197" type="cond" truecount="1" falsecount="1"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="25" count="198" type="cond" truecount="1" falsecount="1"/>
-        <line num="26" count="198" type="stmt"/>
+        <line num="25" count="197" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="197" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
@@ -689,25 +689,25 @@
         <line num="103" count="51" type="stmt"/>
         <line num="104" count="51" type="stmt"/>
         <line num="105" count="51" type="stmt"/>
-        <line num="112" count="147" type="cond" truecount="2" falsecount="0"/>
-        <line num="113" count="76" type="stmt"/>
-        <line num="115" count="76" type="cond" truecount="2" falsecount="0"/>
+        <line num="112" count="146" type="cond" truecount="2" falsecount="0"/>
+        <line num="113" count="75" type="stmt"/>
+        <line num="115" count="75" type="cond" truecount="2" falsecount="0"/>
         <line num="116" count="5" type="stmt"/>
-        <line num="118" count="71" type="stmt"/>
-        <line num="122" count="76" type="cond" truecount="2" falsecount="0"/>
+        <line num="118" count="70" type="stmt"/>
+        <line num="122" count="75" type="cond" truecount="2" falsecount="0"/>
         <line num="123" count="23" type="stmt"/>
         <line num="126" count="71" type="stmt"/>
-        <line num="130" count="147" type="cond" truecount="1" falsecount="1"/>
-        <line num="133" count="147" type="stmt"/>
-        <line num="134" count="147" type="stmt"/>
-        <line num="138" count="147" type="cond" truecount="2" falsecount="0"/>
+        <line num="130" count="146" type="cond" truecount="1" falsecount="1"/>
+        <line num="133" count="146" type="stmt"/>
+        <line num="134" count="146" type="stmt"/>
+        <line num="138" count="146" type="cond" truecount="2" falsecount="0"/>
         <line num="139" count="94" type="cond" truecount="2" falsecount="0"/>
         <line num="140" count="23" type="stmt"/>
         <line num="142" count="71" type="stmt"/>
-        <line num="147" count="147" type="cond" truecount="2" falsecount="0"/>
-        <line num="148" count="78" type="stmt"/>
-        <line num="151" count="147" type="stmt"/>
-        <line num="154" count="147" type="cond" truecount="2" falsecount="0"/>
+        <line num="147" count="146" type="cond" truecount="2" falsecount="0"/>
+        <line num="148" count="77" type="stmt"/>
+        <line num="151" count="146" type="stmt"/>
+        <line num="154" count="146" type="cond" truecount="2" falsecount="0"/>
         <line num="157" count="94" type="stmt"/>
         <line num="160" count="94" type="cond" truecount="4" falsecount="1"/>
         <line num="162" count="94" type="stmt"/>
@@ -729,11 +729,11 @@
         <line num="197" count="18" type="stmt"/>
         <line num="202" count="43" type="stmt"/>
         <line num="209" count="43" type="stmt"/>
-        <line num="213" count="147" type="stmt"/>
-        <line num="215" count="147" type="cond" truecount="2" falsecount="0"/>
-        <line num="216" count="96" type="cond" truecount="2" falsecount="0"/>
-        <line num="217" count="71" type="stmt"/>
-        <line num="218" count="71" type="stmt"/>
+        <line num="213" count="146" type="stmt"/>
+        <line num="215" count="146" type="cond" truecount="2" falsecount="0"/>
+        <line num="216" count="95" type="cond" truecount="2" falsecount="0"/>
+        <line num="217" count="70" type="stmt"/>
+        <line num="218" count="70" type="stmt"/>
         <line num="221" count="25" type="stmt"/>
       </file>
     </package>

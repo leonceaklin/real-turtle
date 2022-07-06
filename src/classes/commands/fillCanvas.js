@@ -1,4 +1,4 @@
-import Command from '../constructors/drawingCommand';
+import Command from "../constructors/drawingCommand";
 
 export default class FillCanvasCommand extends Command {
   static params = {};
@@ -25,8 +25,12 @@ export default class FillCanvasCommand extends Command {
         ctx.fill();
         resolve();
       } else {
-        ctx.clearRect(0, 0, this.main.taskHandler.canvas.width,
-          this.main.taskHandler.canvas.height);
+        ctx.clearRect(
+          0,
+          0,
+          this.main.taskHandler.canvas.width,
+          this.main.taskHandler.canvas.height
+        );
         ctx.globalAlpha = 1 - progress;
         ctx.drawImage(this.main.taskHandler.previousCanvas, 0, 0);
         ctx.globalAlpha = progress;

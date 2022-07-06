@@ -1,4 +1,4 @@
-import Command from '../constructors/drawingCommand';
+import Command from "../constructors/drawingCommand";
 
 export default class SetInitialPositionCommand extends Command {
   static params = { x: new Number(), y: new Number() };

@@ -1,6 +1,6 @@
-import Command from '../constructors/drawingCommand';
+import Command from "../constructors/drawingCommand";
 
-import SetStrokeStyleCommand from './setStrokeStyle';
+import SetStrokeStyleCommand from "./setStrokeStyle";
 
 export default class SetStrokeColorHSLCommand extends Command {
   static params = { h: new Number(), s: 1, l: 0.5 };

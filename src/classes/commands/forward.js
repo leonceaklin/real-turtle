@@ -1,9 +1,9 @@
-import Command from '../constructors/drawingCommand';
+import Command from "../constructors/drawingCommand";
 
-import MoveCommand from './move';
+import MoveCommand from "./move";
 
 export default class ForwardCommand extends Command {
-  static aliases = ['fd'];
+  static aliases = ["fd"];
 
   static params = { steps: new Number() };
 
